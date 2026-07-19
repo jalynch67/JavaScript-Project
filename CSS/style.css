@@ -60,6 +60,10 @@ label {
   margin-bottom: 6px;
 }
 
+fieldset {
+  border: 1px solid #8d7f99;
+}
+
 fieldset label {
   font-weight: normal;
   margin-bottom: 8px;
@@ -71,4 +75,42 @@ textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #f8f5ef;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 10px 14px;
+  border: 1px solid #c99a3e;
+  background-color: #c99a3e;
+  color: #241f1a;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e0b85f;
+}
+
+aside {
+  margin-top: 24px;
+  padding: 20px;
+  background-color: #f3ead7;
+  color: #241f1a;
+  border: 2px solid #c99a3e;
+}
+
+aside h3 {
+  margin-top: 0;
+}
+
+article {
+  padding: 16px;
+  border: 1px solid #c5aa72;
+}
+
+article h4 {
+  margin-top: 0;
+  font-size: 1.5rem;
 }
