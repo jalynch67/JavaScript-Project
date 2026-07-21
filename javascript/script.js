@@ -121,5 +121,5 @@ weaponSelect.addEventListener("change", updateWeaponPreview);
 const playstyleOptions = document.querySelectorAll("input[name='playstyle']");
 
 for (let i = 0; i < playstyleOptions.length; i++) {
-  playstyleOptions[i].adEventListener("change", updatePlaystylePreview);
+  playstyleOptions[i].addEventListener("change", updatePlaystylePreview);
 }
