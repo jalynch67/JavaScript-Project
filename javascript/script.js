@@ -15,7 +15,7 @@ const classDetails = document.getElementById("class-details");
 const classStats = {
   Warrior: {
     description:
-      "A strong fronr-line fighter who relies on strength and defense",
+      "A strong front-line fighter who relies on strength and defense.",
     strength: 9,
     magic: 2,
     agility: 5,
@@ -25,7 +25,7 @@ const classStats = {
 
   Mage: {
     description:
-      "A spellcaster who uses powerful magic but has a lower defense",
+      "A spellcaster who uses powerful magic but has a lower defense.",
     strength: 2,
     magic: 10,
     agility: 4,
@@ -34,7 +34,7 @@ const classStats = {
   },
   Rogue: {
     description:
-      "A quick and stealthy fighter who focuses on agility and surprise attacks",
+      "A quick and stealthy fighter who focuses on agility and surprise attacks.",
     strength: 4,
     magic: 3,
     agility: 10,
@@ -43,7 +43,7 @@ const classStats = {
   },
   Ranger: {
     description:
-      "A balanced ranged fighter with good agility and steady defense",
+      "A balanced ranged fighter with good agility and steady defense.",
     strength: 5,
     magic: 4,
     agility: 8,
@@ -135,7 +135,7 @@ function updateClassDetails() {
     classDetails.innerHTML = `
   <h3>${characterClass}</h3>
   <p>${selectedClass.description}</p>
-  <p><strong>Recommended weapons:</strong>${selectedClass.weapons}</p>  
+  <p><strong>Recommended weapons: </strong>${selectedClass.weapons}</p>  
   `;
   }
 }
