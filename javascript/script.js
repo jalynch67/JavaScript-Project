@@ -9,6 +9,35 @@ const previewType = document.getElementById("preview-type");
 const previewWeapon = document.getElementById("preview-weapon");
 const previewPlaystyle = document.getElementById("preview-playstyle");
 
+/* Class stats */
+const classStats = {
+  Warrior: {
+    strength: 9,
+    magic: 2,
+    agility: 5,
+    defense: 8,
+  },
+
+  Mage: {
+    strength: 2,
+    magic: 10,
+    agility: 4,
+    defense: 3,
+  },
+  Rogue: {
+    strength: 4,
+    magic: 3,
+    agility: 10,
+    defense: 5,
+  },
+  Ranger: {
+    strength: 5,
+    magic: 4,
+    agility: 8,
+    defense: 6,
+  },
+};
+
 /* Name Preview Function */
 function updateNamePreview() {
   const characterName = nameInput.value.trim();
