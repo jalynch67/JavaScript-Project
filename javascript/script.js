@@ -2,10 +2,13 @@
 const nameInput = document.getElementById("character-name");
 const raceSelect = document.getElementById("character-race");
 const classSelect = document.getElementById("character-class");
+const weaponSelect = document.getElementById("character-weapon");
 
 const previewName = document.getElementById("preview-name");
 const previewType = document.getElementById("preview-type");
+const previewWeapon = document.getElementById("preview-weapon");
 
+/* Name Preview Function */
 function updateNamePreview() {
   const characterName = nameInput.value.trim();
 
@@ -16,6 +19,7 @@ function updateNamePreview() {
   }
 }
 
+/* Type Preview Function */
 function updateTypePreview() {
   const race = raceSelect.value;
   const characterClass = classSelect.value;
@@ -31,6 +35,18 @@ function updateTypePreview() {
   }
 }
 
+/* Weapon Preview Function */
+function updateWeaponPreview() {
+  const weapon = weaponSelect.value;
+
+  if (weapon === "") {
+    previewWeapon.textContent = "Not selected";
+  } else {
+    previewWeapon.textContent = weapon;
+  }
+}
+
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
 classSelect.addEventListener("change", updateTypePreview);
+weaponSelect.addEventListener("change", updateWeaponPreview);
