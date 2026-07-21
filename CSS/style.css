@@ -94,7 +94,6 @@ button:hover {
 }
 
 aside {
-  margin-top: 24px;
   padding: 20px;
   background-color: #f3ead7;
   color: #241f1a;
@@ -118,4 +117,49 @@ article h4 {
 footer {
   padding: 20px;
   text-align: center;
+}
+
+#builder {
+  display: grid;
+  gap: 20px;
+}
+
+#builder h2,
+#builder > p {
+  margin-bottom: 0;
+}
+
+#character-form {
+  padding: 20px;
+  border: 1px solid #4b3f55;
+}
+
+#builder aside {
+  border: 2px solid #c99a3e;
+  padding: 20px;
+}
+
+#builder aside h3 {
+  margin-top: 0;
+}
+
+#builder article {
+  border: 1px solid #c5aa72;
+  padding: 16px;
+}
+
+#builder article h4 {
+  margin-top: 0;
+}
+
+@media (min-width: 850px) {
+  #builder {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  #builder h2,
+  #builder > p {
+    grid-column: 1 / -1;
+  }
 }
