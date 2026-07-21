@@ -9,33 +9,46 @@ const previewType = document.getElementById("preview-type");
 const previewWeapon = document.getElementById("preview-weapon");
 const previewPlaystyle = document.getElementById("preview-playstyle");
 const previewStats = document.getElementById("preview-stats");
+const classDetails = document.getElementById("class-details");
 
 /* Class stats */
 const classStats = {
   Warrior: {
+    description:
+      "A strong fronr-line fighter who relies on strength and defense",
     strength: 9,
     magic: 2,
     agility: 5,
     defense: 8,
+    weapon: "Sword, Axe, Shield",
   },
 
   Mage: {
+    description:
+      "A spellcaster who uses powerful magic but has a lower defense",
     strength: 2,
     magic: 10,
     agility: 4,
     defense: 3,
+    weapon: "Staff, Wand, Spellbook",
   },
   Rogue: {
+    description:
+      "A quick and stealthy fighter who focuses on agility and surprise attacks",
     strength: 4,
     magic: 3,
     agility: 10,
     defense: 5,
+    weapon: "Dagger, Short Sword, Bow",
   },
   Ranger: {
+    description:
+      "A balanced ranged fighter with good agility and steady defense",
     strength: 5,
     magic: 4,
     agility: 8,
     defense: 6,
+    weapon: "Bow, Crossbow, Twin Blades",
   },
 };
 
@@ -110,11 +123,29 @@ function updateStatsPreview() {
   }
 }
 
+/* Class details preview function */
+function updateClassDetails() {
+  const characterClass = classSelect.value;
+  if (characterClass === "") {
+    classDetails.innerHTML =
+      "<p>Select a class in the builder to view more information here</p>";
+  } else {
+    const selectedClass = classStats[characterClass];
+
+    classDetails.innerHTML = `
+  <h3>${characterClass}</h3>
+  <p>${selectedClass.description}</p>
+  <p><strong>Recommended weapons:</strong>${selectedClass.weapons}</p>  
+  `;
+  }
+}
+
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
 classSelect.addEventListener("change", function () {
   updateTypePreview();
   updateStatsPreview();
+  updateClassDetails();
 });
 weaponSelect.addEventListener("change", updateWeaponPreview);
 
