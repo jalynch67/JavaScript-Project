@@ -7,6 +7,7 @@ const weaponSelect = document.getElementById("character-weapon");
 const previewName = document.getElementById("preview-name");
 const previewType = document.getElementById("preview-type");
 const previewWeapon = document.getElementById("preview-weapon");
+const previewPlaystyle = document.getElementById("preview-playstyle");
 
 /* Name Preview Function */
 function updateNamePreview() {
@@ -46,7 +47,25 @@ function updateWeaponPreview() {
   }
 }
 
+/* Playstyle Preview Function */
+function updatePlaystylePreview() {
+  const selectedPlaystyle = document.querySelector(
+    "input[name='playstyle']:checked",
+  );
+  if (selectedPlaystyle === null) {
+    previewPlaystyle.textContent = "Not selected";
+  } else {
+    previewPlaystyle.textContent = selectedPlaystyle.value;
+  }
+}
+
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
 classSelect.addEventListener("change", updateTypePreview);
 weaponSelect.addEventListener("change", updateWeaponPreview);
+
+const playstyleOptions = document.querySelectorAll("input[name='playstyle']");
+
+for (let i = 0; i < playstyleOptions.length; i++) {
+  playstyleOptions[i].addEventListener("change", updatePlaystylePreview);
+}
