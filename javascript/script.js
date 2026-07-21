@@ -1,7 +1,10 @@
 /* -- Live Preview JS -- */
-/* -- START: Character Name change update -- */
 const nameInput = document.getElementById("character-name");
+const raceSelect = document.getElementById("character-race");
+const classSelect = document.getElementById("character-class");
+
 const previewName = document.getElementById("preview-name");
+const previewType = document.getElementById("preview-type");
 
 function updateNamePreview() {
   const characterName = nameInput.value.trim();
@@ -13,5 +16,21 @@ function updateNamePreview() {
   }
 }
 
+function updateTypePreview() {
+  const race = raceSelect.value;
+  const characterClass = classSelect.value;
+
+  if (race === "" && characterClass === "") {
+    previewType.textContent = "Not Selected";
+  } else if (race !== "" && characterClass === "") {
+    previewType.textContent = race;
+  } else if (race === "" && characterClass !== "") {
+    previewType.textContent = characterClass;
+  } else {
+    previewType.textContent = race + " " + characterClass;
+  }
+}
+
 nameInput.addEventListener("input", updateNamePreview);
-/* -- END: Character Name change update -- */
+raceSelect.addEventListener("change", updateTypePreview);
+classSelect.addEventListener("change", updateTypePreview);
