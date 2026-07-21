@@ -3,7 +3,9 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #1c120b;
+  color: #f9ecd0;
   margin: 0;
   line-height: 1.5;
 }
@@ -57,15 +59,21 @@ nav a:hover {
 }
 
 section {
-  margin: 20px;
+  margin: 24px 20px;
   padding: 24px;
-  background-color: lightgray;
-  border: 1px solid gray;
+  background-color: #3a2416;
+  border: 2px solid #7b4f2a;
+  border-radius: 8px;
 }
 
 section h2 {
   margin-top: 0;
-  color: black;
+  color: #f1c76a;
+  letter-spacing: 0.5px;
+}
+
+section p {
+  color: #f9ecd0;
 }
 
 form {
@@ -120,27 +128,6 @@ button:hover {
   background-color: #e0b85f;
 }
 
-aside {
-  padding: 20px;
-  background-color: #f3ead7;
-  color: black;
-  border: 2px solid #c99a3e;
-}
-
-aside h3 {
-  margin-top: 0;
-}
-
-article {
-  padding: 16px;
-  border: 1px solid #c5aa72;
-}
-
-article h4 {
-  margin-top: 0;
-  font-size: 1.5rem;
-}
-
 footer {
   padding: 20px;
   text-align: center;
@@ -162,21 +149,41 @@ footer {
 }
 
 #builder aside {
-  border: 2px solid #c99a3e;
   padding: 20px;
+  background-color: #f3ead7;
+  color: #24160d;
+  border: 2px solid #c99a3c;
+  border-radius: 6px;
 }
 
 #builder aside h3 {
   margin-top: 0;
+  color: #5a3822;
+}
+
+#builder aside p {
+  color: #24160d;
 }
 
 #builder article {
-  border: 1px solid #c5aa72;
   padding: 16px;
+  background-color: #fff3cf;
+  border: 1px solid #c5aa72;
+  border-radius: 4px;
 }
 
 #builder article h4 {
   margin-top: 0;
+  color: #3a2416;
+  font-size: 1.5rem;
+}
+
+#builder article strong {
+  color: #5a3822;
+}
+
+#preview-stats {
+  color: #24160d;
 }
 
 @media (min-width: 850px) {
