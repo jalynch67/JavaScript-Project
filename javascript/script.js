@@ -8,6 +8,7 @@ const previewName = document.getElementById("preview-name");
 const previewType = document.getElementById("preview-type");
 const previewWeapon = document.getElementById("preview-weapon");
 const previewPlaystyle = document.getElementById("preview-playstyle");
+const previewStats = document.getElementById("preview-stats");
 
 /* Class stats */
 const classStats = {
@@ -88,13 +89,37 @@ function updatePlaystylePreview() {
   }
 }
 
+/* Stats Preview Function */
+function updateStatsPreview() {
+  const characterClass = classSelect.value;
+  if (characterClass === "") {
+    previewStats.innerHTML = `
+    <li>Strength: 0</li>
+    <li>Magic: 0</li>
+    <li>Agility: 0</li>
+    <li>Defense: 0</li>
+`;
+  } else {
+    const stats = classStats[characterClass];
+    previewStats.innerHTML = `
+  <li>Strength: ${stats.strength}</li>
+  <li>Magic: ${stats.magic}</li>
+  <li>Agility: ${stats.agility}</li>
+  <li>Defense: ${stats.defense}</li>
+  `;
+  }
+}
+
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
-classSelect.addEventListener("change", updateTypePreview);
+classSelect.addEventListener("change", function () {
+  updateTypePreview();
+  updateStatsPreview();
+});
 weaponSelect.addEventListener("change", updateWeaponPreview);
 
 const playstyleOptions = document.querySelectorAll("input[name='playstyle']");
 
 for (let i = 0; i < playstyleOptions.length; i++) {
-  playstyleOptions[i].addEventListener("change", updatePlaystylePreview);
+  playstyleOptions[i].adEventListener("change", updatePlaystylePreview);
 }
