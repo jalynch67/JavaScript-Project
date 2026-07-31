@@ -12,7 +12,6 @@ const previewPlaystyle = document.getElementById("preview-playstyle");
 const previewStats = document.getElementById("preview-stats");
 const classDetails = document.getElementById("class-details");
 const previewAbilities = document.getElementById("preview-abilities");
-
 const abilityButtons = document.querySelectorAll("#ability-list button");
 
 /* Class stats */
@@ -24,7 +23,7 @@ const classStats = {
     magic: 2,
     agility: 5,
     defense: 8,
-    weapon: "Sword, Axe, Shield",
+    weapons: "Sword, Axe, Shield",
   },
 
   Mage: {
@@ -34,7 +33,7 @@ const classStats = {
     magic: 10,
     agility: 4,
     defense: 3,
-    weapon: "Staff, Wand, Spellbook",
+    weapons: "Staff, Wand, Spellbook",
   },
   Rogue: {
     description:
@@ -43,7 +42,7 @@ const classStats = {
     magic: 3,
     agility: 10,
     defense: 5,
-    weapon: "Dagger, Short Sword, Bow",
+    weapons: "Dagger, Short Sword, Bow",
   },
   Ranger: {
     description:
@@ -52,7 +51,7 @@ const classStats = {
     magic: 4,
     agility: 8,
     defense: 6,
-    weapon: "Bow, Crossbow, Twin Blades",
+    weapons: "Bow, Crossbow, Twin Blades",
   },
 };
 
