@@ -3,6 +3,7 @@ const nameInput = document.getElementById("character-name");
 const raceSelect = document.getElementById("character-race");
 const classSelect = document.getElementById("character-class");
 const weaponSelect = document.getElementById("character-weapon");
+const playstyleOptions = document.querySelectorAll("input[name='playstyle']");
 
 const previewName = document.getElementById("preview-name");
 const previewType = document.getElementById("preview-type");
@@ -156,6 +157,11 @@ function updateAbilitiesPreview() {
 
 function handleAbilityClick(event) {
   const abilityName = event.target.dataset.ability;
+
+  if (selectedAbilities.includes(abilityName)) {
+    return;
+  }
+
   selectedAbilities.push(abilityName);
   updateAbilitiesPreview();
 }
@@ -168,8 +174,6 @@ classSelect.addEventListener("change", function () {
   updateClassDetails();
 });
 weaponSelect.addEventListener("change", updateWeaponPreview);
-
-const playstyleOptions = document.querySelectorAll("input[name='playstyle']");
 
 /*Event listeners*/
 for (let i = 0; i < playstyleOptions.length; i++) {
