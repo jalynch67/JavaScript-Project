@@ -10,6 +10,9 @@ const previewWeapon = document.getElementById("preview-weapon");
 const previewPlaystyle = document.getElementById("preview-playstyle");
 const previewStats = document.getElementById("preview-stats");
 const classDetails = document.getElementById("class-details");
+const previewAbilities = document.getElementById("preview-abilities");
+
+const abilityButtons = document.querySelectorAll("#ability-list button");
 
 /* Class stats */
 const classStats = {
@@ -51,6 +54,8 @@ const classStats = {
     weapon: "Bow, Crossbow, Twin Blades",
   },
 };
+
+let selectedAbilities = [];
 
 /* Name Preview Function */
 function updateNamePreview() {
@@ -140,6 +145,21 @@ function updateClassDetails() {
   }
 }
 
+/*Abilities preview function */
+function updateAbilitiesPreview() {
+  if (selectedAbilities.length === 0) {
+    previewAbilities.textContent = "None Selected";
+  } else {
+    previewAbilities.textContent = selectedAbilities.join(", ");
+  }
+}
+
+function handleAbilityClick(event) {
+  const abilityName = event.target.dataset.ability;
+  selectedAbilities.push(abilityName);
+  updateAbilitiesPreview();
+}
+
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
 classSelect.addEventListener("change", function () {
@@ -151,6 +171,13 @@ weaponSelect.addEventListener("change", updateWeaponPreview);
 
 const playstyleOptions = document.querySelectorAll("input[name='playstyle']");
 
+/*Event listeners*/
 for (let i = 0; i < playstyleOptions.length; i++) {
   playstyleOptions[i].addEventListener("change", updatePlaystylePreview);
 }
+
+for (let i = 0; i < abilityButtons.length; i++) {
+  abilityButtons[i].addEventListener("click", handleAbilityClick);
+}
+
+console.log("JavaScript is running");
