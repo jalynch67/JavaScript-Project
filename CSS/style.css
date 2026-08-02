@@ -133,9 +133,27 @@ footer {
   text-align: center;
 }
 
-#builder {
+.builder-dashboard {
   display: grid;
   gap: 20px;
+}
+
+.builder-info {
+  display: grid;
+  gap: 20px;
+}
+
+.info-panel {
+  padding: 18px;
+  background-color: #2b1a10;
+  border: 1px solid #7b4f2a;
+  border-radius: 6px;
+}
+
+.info-panel h3,
+#character-form h3 {
+  margin-top: 0;
+  color: #f1c76a;
 }
 
 #builder h2,
@@ -182,18 +200,23 @@ footer {
   color: #5a3822;
 }
 
+#ability-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#ability-list button {
+  width: auto;
+}
+
 #preview-stats {
   color: #24160d;
 }
 
-@media (min-width: 850px) {
-  #builder {
-    grid-template-columns: 1fr 1fr;
+@media (min-width: 1000px) {
+  .builder-dashboard {
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: start;
-  }
-
-  #builder h2,
-  #builder > p {
-    grid-column: 1 / -1;
   }
 }
