@@ -4,7 +4,12 @@
 
 body {
   font-family: Georgia, "Times New Roman", serif;
-  background-color: #1c120b;
+  background: radial-gradient(
+    circle at top,
+    #2c1d13 0%,
+    #1c120b 45%,
+    #0f0906 100%
+  );
   color: #f9ecd0;
   margin: 0;
   line-height: 1.5;
@@ -13,16 +18,16 @@ body {
 header,
 main,
 footer {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
 header {
-  padding: 28px 24px;
-  max-width: 1100px;
-  margin: 24px auto;
-  border: 1px solid gray;
+  padding: 22px 24px;
+  margin: 18px auto 14px;
+  border: 1px solid #7b4f2a;
   border-radius: 10px;
+  background-color: rgba(43, 26, 16, 0.95);
 }
 
 header h1 {
@@ -59,21 +64,22 @@ nav a:hover {
 }
 
 section {
-  margin: 24px 20px;
-  padding: 24px;
-  background-color: #3a2416;
+  margin: 18px 20px;
+  padding: 22px;
+  background-color: rgba(58, 36, 22, 0.96);
   border: 2px solid #7b4f2a;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 section h2 {
-  margin-top: 0;
+  margin: 0 0 6px;
   color: #f1c76a;
   letter-spacing: 0.5px;
 }
 
 section p {
-  color: #f9ecd0;
+  margin-top: 0;
+  color: #d8c29d;
 }
 
 form {
@@ -129,8 +135,9 @@ button:hover {
 }
 
 footer {
-  padding: 20px;
+  padding: 18px 20px 28px;
   text-align: center;
+  color: #d8c29d;
 }
 
 .builder-dashboard {
@@ -204,10 +211,6 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-}
-
-#ability-list button {
-  width: auto;
 }
 
 #preview-stats {
