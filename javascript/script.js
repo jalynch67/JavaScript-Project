@@ -156,12 +156,13 @@ function updateAbilitiesPreview() {
 
 function handleAbilityClick(event) {
   const abilityName = event.target.dataset.ability;
-
   if (selectedAbilities.includes(abilityName)) {
-    return;
+    selectedAbilities = selectedAbilities.filter(function (ability) {
+      return ability !== abilityName;
+    });
+  } else {
+    selectedAbilities.push(abilityName);
   }
-
-  selectedAbilities.push(abilityName);
   updateAbilitiesPreview();
 }
 
