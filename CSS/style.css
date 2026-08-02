@@ -179,12 +179,6 @@ section > p {
   margin-top: 18px;
 }
 
-#character-form,
-.builder-info,
-#builder aside {
-  min-height: 100%;
-}
-
 /*Left panel*/
 #character-form {
   padding: 18px;
