@@ -153,6 +153,91 @@ nav a:hover {
   color: #24160d;
 }
 
+#hero {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: #f1c76a;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#hero h2 {
+  margin: 0 0 12px;
+  font-size: 2.3rem;
+  line-height: 1.1;
+}
+
+#hero p {
+  color: #d8c29d;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 11px 16px;
+  background-color: #c99a3e;
+  color: #24160d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero-panel {
+  padding: 18px;
+  background-color: #24160d;
+  border: 1px solid #7b4f2a;
+  border-radius: 8px;
+}
+
+.hero-panel h3 {
+  margin-top: 0;
+  color: #f1c76a;
+}
+
+.hero-panel ul {
+  margin-bottom: 0;
+  padding-left: 20px;
+  color: #f9ecd0;
+}
+
+@media (min-width: 850px) {
+  #hero {
+    grid-template-columns: 1.4fr 0.8fr;
+  }
+}
+
+.feature-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.feature-grid article {
+  padding: 18px;
+  background-color: #24160d;
+  border: 1px solid #7b4f2a;
+  border-radius: 8px;
+}
+
+.feature-grid h3 {
+  color: #f1c76a;
+}
+
+@media (min-width: 800px) {
+  .feature-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 section {
   margin: 18px 20px;
   padding: 22px;
