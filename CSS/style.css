@@ -447,6 +447,34 @@ button:hover {
   color: #d8c29d;
 }
 
+.steps-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.steps-grid article {
+  padding: 18px;
+  background-color: #24160d;
+  border: 1px solid #7b4f2a;
+  border-radius: 8px;
+}
+
+.steps-grid h3 {
+  margin-top: 0;
+  color: #f1c76a;
+}
+
+.steps-grid p {
+  color: #d8c29d;
+}
+
+@media (min-width: 800px) {
+  .steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 footer {
   padding: 18px 20px 28px;
   text-align: center;
