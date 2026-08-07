@@ -83,56 +83,87 @@
 
 
         <section id="features">
-            <h2>What You Can Build</h2>
-            <p>Use the builder to shape your character and see each choice reflected in the preview.</p>
+            <div class="section-heading-row">
+                <div>
+                    <p class="section-label">Builder Features</p>
+                    <h2>Shape every part of your hero</h2>
+                </div>
+                <p>Select a feature to see what changes inside the builder.</p>
+            </div>
 
-            <div class="feature-grid">
-                <article>
-                    <h3>Choose Your Class</h3>
-                    <p>Pick from warrior, Mage, Rogue or Ranger abd see different stats appear.</p>
-                </article>
+            <div class="feature-showcase">
+                <div class="feature-options" aria-label="Builder feature previews">
+                    <button type="button" class="feature-option selected" data-feature="class">
+                        <span class="feature-number">01</span>
+                        <span>Choose a class</span>
+                    </button>
 
-                <article>
-                    <h3>Build Your Stats</h3>
-                    <p>Your class choice updates strength, magic, agility and defense.</p>
-                </article>
+                    <button type="button" class="feature-option" data-feature="stats">
+                        <span class="feature-number">02</span>
+                        <span>Build your stats</span>
+                    </button>
 
-                <article>
-                    <h3>Selected Abilities</h3>
-                    <p>Add Special abilities like Fireball, Shadow Step or Stone Guard.</p>
-                </article>
+                    <button type="button" class="feature-option" data-feature="abilities">
+                        <span class="feature-number">03</span>
+                        <span>Select abilities</span>
+                    </button>
 
-                <article>
-                    <h3>Preview Your Hero</h3>
-                    <p>Watch your character sheet update as you make selections.</p>
-                </article>
+                    <button type="button" class="feature-option" data-feature="preview">
+                        <span class="feature-number">04</span>
+                        <span>Preview your hero</span>
+                    </button>
+                </div>
+
+                <div id="feature-preview" aria-live="polite">
+                    <p class="feature-preview-label">Class Selection</p>
+                    <h3>Choose how your hero fights</h3>
+                    <p>Pick Warrior, Mage, Rogue or Ranger. Each class has its own stats, description and recommended
+                        weapons.</p>
+                    <div class="feature-preview-example">
+                        <span>Warrior</span>
+                        <strong>Strength 9</strong>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="how-it-works">
-            <h2>How It Works</h2>
-            <p>Create a character in a few simple steps.</p>
+            <div class="section-heading-row">
+                <div>
+                    <p class="section-label">How It Works</p>
+                    <h2>Four steps from idea to hero</h2>
+                </div>
+                <a href="#builder" class="section-link">Open the builder</a>
+            </div>
 
-            <div class="steps-grid">
-                <article>
-                    <h3>1. Enter Details</h3>
-                    <p>Start with a name, race and short background.</p>
-                </article>
+            <div class="step-track" aria-label="Character creation steps">
+                <button type="button" class="step-button selected" data-step="details">
+                    <span>1</span>
+                    Enter details
+                </button>
 
-                <article>
-                    <h3>2. Pick a Class</h3>
-                    <p>Select a class to generate your character stats.</p>
-                </article>
+                <button type="button" class="step-button" data-step="class">
+                    <span>2</span>
+                    Pick a class
+                </button>
 
-                <article>
-                    <h3>3. Choose Abilities</h3>
-                    <p>Add abilities that match your character style.</p>
-                </article>
+                <button type="button" class="step-button" data-step="abilities">
+                    <span>3</span>
+                    Add abilities
+                </button>
 
-                <article>
-                    <h3>4. Save Your Hero</h3>
-                    <p>Create a saved character card when your build is ready.</p>
-                </article>
+                <button type="button" class="step-button" data-step="save">
+                    <span>4</span>
+                    Save the hero
+                </button>
+            </div>
+
+            <div id="step-preview" aria-live="polite">
+                <span class="step-preview-number">Step 1</span>
+                <div>
+                    <h3>Start with the basics</h3>
+                    <p>Give the character a name, choose a race and write a short background.</p>
+                </div>
             </div>
         </section>
 

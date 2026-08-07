@@ -16,6 +16,10 @@ const heroClassButtons = document.querySelectorAll(
 );
 const heroClassPreview = document.getElementById("hero-class-preview");
 const heroSelectorCount = document.querySelector(".hero-selector-count");
+const featureButtons = document.querySelectorAll(".feature-option");
+const featurePreview = document.getElementById("feature-preview");
+const stepButtons = document.querySelectorAll(".step-button");
+const stepPreview = document.getElementById("step-preview");
 
 /* Class data */
 const classStats = {
@@ -62,6 +66,69 @@ const classStats = {
     weapons: "Bow, Crossbow, Twin Blades",
     mainStat: "Agility",
     image: "images/ranger.png",
+  },
+};
+
+/* Feature stats data */
+const featureInfo = {
+  class: {
+    label: "Class Selection",
+    title: "Choose how your hero fights",
+    description:
+      "Pick Warrior, Mage, Rogue or Ranger. Each class has its own stats, description and recommended weapons.",
+    exampleName: "Warrior",
+    exampleValue: "Strength 9",
+  },
+  stats: {
+    label: "Dynamic Stats",
+    title: "See the build change instantly",
+    description:
+      "Strength, magic, agility and defense update when a different class is selected.",
+    exampleName: "Mage",
+    exampleValue: "Magic 10",
+  },
+  abilities: {
+    label: "Ability Selection",
+    title: "Add skills to the build",
+    description:
+      "Choose abilities such as Fireball, Shadow Step and Stone Guard. Click an ability again to remove it.",
+    exampleName: "Selected",
+    exampleValue: "Up to you",
+  },
+  preview: {
+    label: "Live Character Card",
+    title: "Watch the hero take shape",
+    description:
+      "The character name, class, weapon, playstyle, stats and abilities appear together in the live preview.",
+    exampleName: "Updates",
+    exampleValue: "No refresh",
+  },
+};
+
+const stepInfo = {
+  details: {
+    number: "Step 1",
+    title: "Start with the basics",
+    description:
+      "Give the character a name, choose a race and write a short background.",
+  },
+  class: {
+    number: "Step 2",
+    title: "Choose a class",
+    description:
+      "Pick a class to generate the character stats and recommended weapons.",
+  },
+  abilities: {
+    number: "Step 3",
+    title: "Add special abilities",
+    description:
+      "Select the skills that best match the character and chosen playstyle.",
+  },
+  save: {
+    number: "Step 4",
+    title: "Create the finished hero",
+    description:
+      "Submit the completed build and add the character to the saved characters section.",
   },
 };
 
@@ -228,6 +295,50 @@ function handleAbilityClick(event) {
   updateAbilitiesPreview();
 }
 
+/* Feature preview function */
+function updateFeaturePreview(event) {
+  const selectedButton = event.currentTarget;
+  const selectedFeature = selectedButton.dataset.feature;
+  const feature = featureInfo[selectedFeature];
+
+  for (let i = 0; i < featureButtons.length; i++) {
+    featureButtons[i].classList.remove("selected");
+  }
+
+  selectedButton.classList.add("selected");
+
+  featurePreview.innerHTML = `
+    <p class="feature-preview-label">${feature.label}</p>
+    <h3>${feature.title}</h3>
+    <p>${feature.description}</p>
+    <div class="feature-preview-example">
+      <span>${feature.exampleName}</span>
+      <strong>${feature.exampleValue}</strong>
+    </div>
+  `;
+}
+
+/* How it works prevuew function */
+function updateStepPreview(event) {
+  const selectedButton = event.currentTarget;
+  const selectedStep = selectedButton.dataset.step;
+  const step = stepInfo[selectedStep];
+
+  for (let i = 0; i < stepButtons.length; i++) {
+    stepButtons[i].classList.remove("selected");
+  }
+
+  selectedButton.classList.add("selected");
+
+  stepPreview.innerHTML = `
+    <span class="step-preview-number">${step.number}</span>
+    <div>
+      <h3>${step.title}</h3>
+      <p>${step.description}</p>
+    </div>
+  `;
+}
+
 /* Main Form EL */
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
@@ -252,6 +363,15 @@ for (let i = 0; i < abilityButtons.length; i++) {
 /* Hero Section BTN EL */
 for (let i = 0; i < heroClassButtons.length; i++) {
   heroClassButtons[i].addEventListener("click", updateHeroClassPreview);
+}
+
+/* Feature & how it works EL */
+for (let i = 0; i < featureButtons.length; i++) {
+  featureButtons[i].addEventListener("click", updateFeaturePreview);
+}
+
+for (let i = 0; i < stepButtons.length; i++) {
+  stepButtons[i].addEventListener("click", updateStepPreview);
 }
 
 console.log("JavaScript is running");
