@@ -15,7 +15,7 @@ const heroClassButtons = document.querySelectorAll(
   "#hero-class-buttons button",
 );
 const heroClassPreview = document.getElementById("hero-class-preview");
-const heroClassImage = document.getElementById("hero-class-image");
+const heroSelectorCount = document.querySelector(".hero-selector-count");
 
 /* Class data */
 const classStats = {
@@ -160,22 +160,46 @@ function updateClassDetails() {
 
 /* Hero section */
 function updateHeroClassPreview(event) {
-  const selectedClassName = event.target.dataset.heroClass;
+  const selectedButton = event.currentTarget;
+  const selectedClassName = selectedButton.dataset.heroClass;
   const selectedClass = classStats[selectedClassName];
+
   for (let i = 0; i < heroClassButtons.length; i++) {
     heroClassButtons[i].classList.remove("selected");
   }
-  event.target.classList.add("selected");
+
+  selectedButton.classList.add("selected");
+
+  const selectedClassNumber =
+    Array.from(heroClassButtons).indexOf(selectedButton) + 1;
+
+  heroSelectorCount.textContent =
+    "0" + selectedClassNumber + " / 0" + heroClassButtons.length;
+
   heroClassPreview.innerHTML = `
     <div class="hero-class-text">
+      <p class="class-role">${selectedClass.mainStat} specialist</p>
       <h4>${selectedClassName}</h4>
       <p>${selectedClass.description}</p>
-      <p><strong>Main stat: </strong>${selectedClass.mainStat}</p>
-      <p><strong>Recommended weapons: </strong>${selectedClass.weapons}</p>
+
+      <div class="class-facts">
+        <p>
+          <span>Main stat</span>
+          <strong>${selectedClass.mainStat}</strong>
+        </p>
+        <p>
+          <span>Weapons</span>
+          <strong>${selectedClass.weapons}</strong>
+        </p>
+      </div>
     </div>
 
     <div class="hero-class-image-wrap">
-      <img id="hero-class-image" src="${selectedClass.image}" alt="${selectedClassName} class portrait">
+      <img
+        id="hero-class-image"
+        src="${selectedClass.image}"
+        alt="${selectedClassName} class portrait"
+      >
     </div>
   `;
 }

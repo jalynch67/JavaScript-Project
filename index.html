@@ -27,27 +27,36 @@
     <main>
 
         <section id="hero">
-            <div class="hero-content">
+            <div class="hero-copy">
                 <p class="eyebrow">Interactive RPG Character Builder</p>
-
                 <h2>Forge a hero before the adventure begins</h2>
-
-                <p>
-                    Pick a class, shape your stats and build a fantasy character
-                    with a live preview that updates as you make choices.
+                <p class="hero-intro">
+                    Choose a path, shape the build and watch the character come to life.
                 </p>
 
                 <div class="hero-actions">
                     <a href="#builder" class="hero-button">Start Building</a>
-                    <a href="#features" class="hero-secondary-button">See Features</a>
+                    <a href="#features" class="hero-secondary-button">Explore Features</a>
+                </div>
+
+                <div class="hero-highlights" aria-label="Builder highlights">
+                    <span>4 classes</span>
+                    <span>Live stats</span>
+                    <span>Custom abilities</span>
                 </div>
             </div>
 
-            <div class="hero-panel">
-                <h3>Choose Your Path</h3>
+            <div class="hero-selector">
+                <div class="hero-selector-heading">
+                    <div>
+                        <p class="hero-selector-label">Class Preview</p>
+                        <h3>Choose Your Path</h3>
+                    </div>
+                    <span class="hero-selector-count">01 / 04</span>
+                </div>
 
-                <div id="hero-class-buttons">
-                    <button type="button" data-hero-class="Warrior">Warrior</button>
+                <div id="hero-class-buttons" aria-label="Preview a character class">
+                    <button type="button" class="selected" data-hero-class="Warrior">Warrior</button>
                     <button type="button" data-hero-class="Mage">Mage</button>
                     <button type="button" data-hero-class="Rogue">Rogue</button>
                     <button type="button" data-hero-class="Ranger">Ranger</button>
@@ -55,11 +64,16 @@
 
                 <div id="hero-class-preview">
                     <div class="hero-class-text">
+                        <p class="class-role">Front-line fighter</p>
                         <h4>Warrior</h4>
                         <p>A strong front-line fighter who relies on strength and defense.</p>
-                        <p><strong>Main stat:</strong> Strength</p>
-                        <p><strong>Recommended weapons:</strong> Sword, Axe, Shield</p>
+
+                        <div class="class-facts">
+                            <p><span>Main stat</span><strong>Strength</strong></p>
+                            <p><span>Weapons</span><strong>Sword, Axe, Shield</strong></p>
+                        </div>
                     </div>
+
                     <div class="hero-class-image-wrap">
                         <img id="hero-class-image" src="images/warrior.png" alt="Warrior class portrait">
                     </div>
