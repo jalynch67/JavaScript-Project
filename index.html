@@ -29,23 +29,44 @@
         <section id="hero">
             <div class="hero-content">
                 <p class="eyebrow">Interactive RPG Character Builder</p>
-                <h2>Create your own fantasy hero</h2>
-                <p>Choose a race, class, weapon and playstyle and abilities, then watch your
-                    character sheet update as you build.
+
+                <h2>Forge a hero before the adventure begins</h2>
+
+                <p>
+                    Pick a class, shape your stats and build a fantasy character
+                    with a live preview that updates as you make choices.
                 </p>
-                <a href="#builder" class="hero-button">Start Building</a>
+
+                <div class="hero-actions">
+                    <a href="#builder" class="hero-button">Start Building</a>
+                    <a href="#features" class="hero-secondary-button">See Features</a>
+                </div>
             </div>
 
             <div class="hero-panel">
-                <h3>Build Features</h3>
-                <ul>
-                    <li>Live character preview</li>
-                    <li>Class-based stats</li>
-                    <li>Selected abilities</li>
-                    <li>Saved character cards</li>
-                </ul>
+                <h3>Choose Your Path</h3>
+
+                <div id="hero-class-buttons">
+                    <button type="button" data-hero-class="Warrior">Warrior</button>
+                    <button type="button" data-hero-class="Mage">Mage</button>
+                    <button type="button" data-hero-class="Rogue">Rogue</button>
+                    <button type="button" data-hero-class="Ranger">Ranger</button>
+                </div>
+
+                <div id="hero-class-preview">
+                    <div class="hero-class-text">
+                        <h4>Warrior</h4>
+                        <p>A strong front-line fighter who relies on strength and defense.</p>
+                        <p><strong>Main stat:</strong> Strength</p>
+                        <p><strong>Recommended weapons:</strong> Sword, Axe, Shield</p>
+                    </div>
+                    <div class="hero-class-image-wrap">
+                        <img id="hero-class-image" src="images/warrior.png" alt="Warrior class portrait">
+                    </div>
+                </div>
             </div>
         </section>
+
 
         <section id="features">
             <h2>What You Can Build</h2>
