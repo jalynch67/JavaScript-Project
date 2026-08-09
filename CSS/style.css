@@ -517,21 +517,26 @@ section > p {
   align-items: center;
   justify-items: center;
   gap: 7px;
+  min-height: 44px;
   padding: 10px 10px;
   background-color: #2b1a10;
   border-color: #684329;
   color: #d8c29d;
+  line-height: 1.2;
 }
 
 .step-button span {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 25px;
   height: 25px;
   flex: 0 0 25px;
   border: 1px solid #8b6235;
   border-radius: 50%;
   color: #f1c76a;
+  line-height: 1;
+  padding-bottom: 4px;
 }
 
 .step-button:hover,
