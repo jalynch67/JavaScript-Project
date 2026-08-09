@@ -384,6 +384,29 @@ function validateCharacterForm() {
   return true;
 }
 
+/* Create character object function */
+function createCharacterForm() {
+  const selectedPlaystyle = document.querySelector(
+    "input[name='playstyle']:checked",
+  );
+  const selectedClass = classStats[classSelect.value];
+  return {
+    name: nameInput.value.trim(),
+    race: raceSelect.value,
+    characterClass: classSelect.value,
+    weapon: weaponSelect.value,
+    playstyle: selectedPlaystyle.value,
+    background: backgroundInput.value.trim(),
+    abilites: selectedAbilities.slice(),
+    stats: {
+      strenght: selectedClass.strength,
+      magic: selectedClass.magic,
+      agility: selectedClass.agility,
+      defense: selectedClass.defense,
+    },
+  };
+}
+
 /* Main Form EL */
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
