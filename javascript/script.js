@@ -75,7 +75,7 @@ const classStats = {
   },
 };
 
-/* Feature stats data */
+/* Feature preview data */
 const featureInfo = {
   class: {
     label: "Class Selection",
@@ -111,6 +111,7 @@ const featureInfo = {
   },
 };
 
+/* how it works data */
 const stepInfo = {
   details: {
     number: "Step 1",
@@ -141,7 +142,7 @@ const stepInfo = {
 /* Selected ability data */
 let selectedAbilities = [];
 
-/* name preview */
+/* name preview fcuntion */
 function updateNamePreview() {
   const characterName = nameInput.value.trim();
 
@@ -152,7 +153,7 @@ function updateNamePreview() {
   }
 }
 
-/* Race preview */
+/* Race and class preview function */
 function updateTypePreview() {
   const race = raceSelect.value;
   const characterClass = classSelect.value;
@@ -231,7 +232,7 @@ function updateClassDetails() {
   }
 }
 
-/* Hero section */
+/* Hero class preview function */
 function updateHeroClassPreview(event) {
   const selectedButton = event.currentTarget;
   const selectedClassName = selectedButton.dataset.heroClass;
@@ -343,6 +344,44 @@ function updateStepPreview(event) {
       <p>${step.description}</p>
     </div>
   `;
+}
+
+/* Form validation function */
+function validateCharacterForm() {
+  const selectedPlaystyle = document.querySelector(
+    "input[name='playstyle']:checked",
+  );
+
+  if (nameInput.value.trim() === "") {
+    formMessage.textContent = "Enter a name for your character.";
+    return false;
+  }
+
+  if (raceSelect.value === "") {
+    formMessage.textContent = "Choose a race for your character.";
+    raceSelect.focus();
+    return false;
+  }
+
+  if (classSelect.value === "") {
+    formMessage.textContent = "Choose a class for your character.";
+    classSelect.focus();
+    return false;
+  }
+
+  if (weaponSelect.value === "") {
+    formMessage.textContent = "Choose a weapon for your character.";
+    weaponSelect.focus();
+    return false;
+  }
+
+  if (selectedPlaystyle === null) {
+    formMessage.textContent = "Choose a playstyle for your character.";
+    return false;
+  }
+
+  formMessage.textContent = "";
+  return true;
 }
 
 /* Main Form EL */
