@@ -1,8 +1,12 @@
+const characterForm = document.getElementById("character-form");
 const nameInput = document.getElementById("character-name");
 const raceSelect = document.getElementById("character-race");
 const classSelect = document.getElementById("character-class");
 const weaponSelect = document.getElementById("character-weapon");
+const backgroundInput = document.getElementById("character-background");
 const playstyleOptions = document.querySelectorAll("input[name='playstyle']");
+const formMessage = document.getElementById("form-message");
+
 const previewName = document.getElementById("preview-name");
 const previewType = document.getElementById("preview-type");
 const previewWeapon = document.getElementById("preview-weapon");
@@ -11,11 +15,13 @@ const previewStats = document.getElementById("preview-stats");
 const previewAbilities = document.getElementById("preview-abilities");
 const classDetails = document.getElementById("class-details");
 const abilityButtons = document.querySelectorAll("#ability-list button");
+const savedCharactersList = document.getElementById("saved-characters-list");
 const heroClassButtons = document.querySelectorAll(
   "#hero-class-buttons button",
 );
 const heroClassPreview = document.getElementById("hero-class-preview");
 const heroSelectorCount = document.querySelector(".hero-selector-count");
+
 const featureButtons = document.querySelectorAll(".feature-option");
 const featurePreview = document.getElementById("feature-preview");
 const stepButtons = document.querySelectorAll(".step-button");
