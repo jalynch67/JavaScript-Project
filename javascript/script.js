@@ -407,6 +407,40 @@ function createCharacterForm() {
   };
 }
 
+/* Saved character function */
+function addSavedCharacter(character) {
+  const emptyMessage = savedCharactersList.querySelector("p");
+  if (emptyMessage !== null && savedCharactersList.children.length === 1) {
+    savedCharactersList.innerHTML = "";
+  }
+  const characterCard = document.createElement("article");
+  characterCard.classList.add("saved-character-card");
+
+  const abilityText =
+    character.abilities.length === 0
+      ? "None selected"
+      : character.abilties.join(", ");
+
+  const backgroundText =
+    character.background === "" ? "No background added." : character.background;
+  characterCard.innerHTML = `
+  <h3>${character.name}</h3>
+  <p><strong>Race / Class:</strong> ${character.race} ${character.characterClass}</p>
+  <p><strong>Weapon:</strong> ${character.weapon}</p>
+  <p><strong>Playstyle:</strong> ${character.playstyle}
+  <p><strong>Abilities:</strong> ${character.abilites}</p>
+  <p><strong>Background:</strong> ${backgroundText}</p>
+  <ul>
+      <li>Strength: ${character.stats.strength}</li>
+      <li>Magic: ${character.stats.magic}</li>
+      <li>Agility: ${character.stats.agility}</li>
+      <li>Defense: ${character.stats.defense}</li>
+    </ul>
+  `;
+
+  savedCharactersList.appendChild(characterCard);
+}
+
 /* Main Form EL */
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
