@@ -441,6 +441,31 @@ function addSavedCharacter(character) {
   savedCharactersList.appendChild(characterCard);
 }
 
+/* Reset builder preview function */
+function resetBuilderPreview() {
+  selectedAbilities = [];
+
+  previewName.textContent = "Unnamed Hero";
+  previewType.textContent = "Not selected";
+  previewWeapon.textContent = "Not selected";
+  previewPlaystyle.textContent = "Not selected";
+  previewAbilities.textContent = "None selected";
+
+  previewStats.innerHTML = `
+  <li>Strength: 0</li>
+  <li>Magic: 0</li>
+  <li>Agility: 0</li>
+  <li>Defense: 0</li>
+  `;
+
+  classDetails.innerHTML =
+    "<p>Select a class in the builder to view more information here.</p>";
+
+  for (let i = 0; i < abilityButtons.length; i++) {
+    abilityButtons[i].classList.remove("selected");
+  }
+}
+
 /* Main Form EL */
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
