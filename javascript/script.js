@@ -32,6 +32,10 @@ const generateIdeaButton = document.getElementById("generate-idea-button");
 const useIdeaButton = document.getElementById("use-idea-button");
 const ideaResult = document.getElementById("idea-result");
 
+const builderAvatar = document.getElementById("builder-avatar");
+const avatarHelp = document.getElementById("avatar-help");
+const weaponShowcaseName = document.getElementById("weapon-showcase-name");
+
 /* Class Data */
 const classStats = {
   Warrior: {
@@ -180,6 +184,32 @@ function updateClassDetails() {
       <p>${selectedClass.description}</p>
       <p><strong>Recommended weapons: </strong>${selectedClass.weapons}</p>
     `;
+  }
+}
+
+/* Builder Avatar Function */
+function updateBuilderAvatar() {
+  const characterClass = classSelect.value;
+
+  if (characterClass === "") {
+    builderAvatar.src = "images/warrior.png";
+    builderAvatar.alt = "Character avatar placeholder";
+    avatarHelp.textContent = "Choose a class";
+  } else {
+    builderAvatar.src = classStats[characterClass].image;
+    builderAvatar.alt = characterClass + " character avatar";
+    avatarHelp.textContent = characterClass;
+  }
+}
+
+/* Weapon Showcase Function */
+function updateWeaponShowcase() {
+  const weapon = weaponSelect.value;
+
+  if (weapon === "") {
+    weaponShowcaseName.textContent = "Choose a weapon";
+  } else {
+    weaponShowcaseName.textContent = weapon;
   }
 }
 
@@ -361,6 +391,8 @@ function useCharacterIdea() {
   updatePlaystylePreview();
   updateStatsPreview();
   updateClassDetails();
+  updateBuilderAvatar();
+  updateWeaponShowcase();
 
   document.getElementById("builder").scrollIntoView({
     behavior: "smooth",
@@ -501,6 +533,9 @@ function resetBuilderPreview() {
   classDetails.innerHTML =
     "<p>Select a class in the builder to view more information here.</p>";
 
+  updateBuilderAvatar();
+  updateWeaponShowcase();
+
   for (let i = 0; i < abilityButtons.length; i++) {
     abilityButtons[i].classList.remove("selected");
   }
@@ -537,12 +572,16 @@ function handleCharacterReset() {
 /* Main Form Event Listener */
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
-weaponSelect.addEventListener("change", updateWeaponPreview);
+weaponSelect.addEventListener("change", function () {
+  updateWeaponPreview();
+  updateWeaponShowcase();
+});
 
 classSelect.addEventListener("change", function () {
   updateTypePreview();
   updateStatsPreview();
   updateClassDetails();
+  updateBuilderAvatar();
 });
 
 characterForm.addEventListener("submit", handleCharacterSubmit);
@@ -567,7 +606,7 @@ for (let i = 0; i < heroClassButtons.length; i++) {
 generateIdeaButton.addEventListener("click", generateCharacterIdea);
 useIdeaButton.addEventListener("click", useCharacterIdea);
 
-/* Page Progress Event Listeners */
+/* Page Progress Event Listener */
 window.addEventListener("scroll", updatePageProgress);
 window.addEventListener("resize", updatePageProgress);
 

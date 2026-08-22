@@ -151,153 +151,194 @@
             </div>
         </section>
 
-        <section id="builder" class="page-section dark-section">
-            <h2>Character Builder</h2>
-            <p>Build your character and see the preview update as you make changes.</p>
+        <section id="builder" class="page-section dark-section builder-section">
+            <div class="builder-heading">
+                <div>
+                    <p class="section-label">Character Builder</p>
+                    <h2>Create Your Hero</h2>
+                </div>
+
+                <p>Complete the form and watch the preview update.</p>
+            </div>
 
             <div class="builder-dashboard">
+                <form id="character-form" class="builder-panel">
+                    <h3>Character Details</h3>
 
-                <form id="character-form">
-                    <h3>Build Your Hero</h3>
+                    <div class="form-grid">
+                        <div class="full-field">
+                            <label for="character-name">Character Name</label>
+                            <input type="text" id="character-name" name="characterName"
+                                placeholder="Enter character name">
+                        </div>
 
-                    <div>
-                        <label for="character-name">Character Name</label>
-                        <input type="text" id="character-name" name="characterName" placeholder="Enter character name">
-                    </div>
+                        <div>
+                            <label for="character-race">Race</label>
+                            <select id="character-race" name="characterRace">
+                                <option value="">Choose a race</option>
+                                <option value="Human">Human</option>
+                                <option value="Elf">Elf</option>
+                                <option value="Dwarf">Dwarf</option>
+                                <option value="Orc">Orc</option>
+                            </select>
+                        </div>
 
-                    <div>
-                        <label for="character-race">Race</label>
-                        <select id="character-race" name="characterRace">
-                            <option value="">Choose a race</option>
-                            <option value="Human">Human</option>
-                            <option value="Elf">Elf</option>
-                            <option value="Dwarf">Dwarf</option>
-                            <option value="Orc">Orc</option>
-                        </select>
-                    </div>
+                        <div>
+                            <label for="character-class">Class</label>
+                            <select id="character-class" name="characterClass">
+                                <option value="">Choose a class</option>
+                                <option value="Warrior">Warrior</option>
+                                <option value="Mage">Mage</option>
+                                <option value="Rogue">Rogue</option>
+                                <option value="Ranger">Ranger</option>
+                            </select>
+                        </div>
 
-                    <div>
-                        <label for="character-class">Class</label>
-                        <select id="character-class" name="characterClass">
-                            <option value="">Choose a class</option>
-                            <option value="Warrior">Warrior</option>
-                            <option value="Mage">Mage</option>
-                            <option value="Rogue">Rogue</option>
-                            <option value="Ranger">Ranger</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="character-weapon">Weapon</label>
-                        <select id="character-weapon" name="characterWeapon">
-                            <option value="">Choose a weapon</option>
-                            <option value="Sword">Sword</option>
-                            <option value="Axe">Axe</option>
-                            <option value="Staff">Staff</option>
-                            <option value="Bow">Bow</option>
-                            <option value="Dagger">Dagger</option>
-                        </select>
+                        <div class="full-field">
+                            <label for="character-weapon">Weapon</label>
+                            <select id="character-weapon" name="characterWeapon">
+                                <option value="">Choose a weapon</option>
+                                <option value="Sword">Sword</option>
+                                <option value="Axe">Axe</option>
+                                <option value="Staff">Staff</option>
+                                <option value="Bow">Bow</option>
+                                <option value="Dagger">Dagger</option>
+                            </select>
+                        </div>
                     </div>
 
                     <fieldset>
                         <legend>Playstyle</legend>
 
-                        <label>
-                            <input type="radio" name="playstyle" value="Balanced">
-                            Balanced
-                        </label>
+                        <div class="playstyle-options">
+                            <label>
+                                <input type="radio" name="playstyle" value="Balanced">
+                                Balanced
+                            </label>
 
-                        <label>
-                            <input type="radio" name="playstyle" value="Aggressive">
-                            Aggressive
-                        </label>
+                            <label>
+                                <input type="radio" name="playstyle" value="Aggressive">
+                                Aggressive
+                            </label>
 
-                        <label>
-                            <input type="radio" name="playstyle" value="Defensive">
-                            Defensive
-                        </label>
+                            <label>
+                                <input type="radio" name="playstyle" value="Defensive">
+                                Defensive
+                            </label>
 
-                        <label>
-                            <input type="radio" name="playstyle" value="Magical">
-                            Magical
-                        </label>
+                            <label>
+                                <input type="radio" name="playstyle" value="Magical">
+                                Magical
+                            </label>
+                        </div>
                     </fieldset>
 
                     <div>
                         <label for="character-background">Background</label>
-                        <textarea id="character-background" name="characterBackground" rows="4"
-                            placeholder="Write a short background for your character"></textarea>
+                        <textarea id="character-background" name="characterBackground" rows="3"
+                            placeholder="Write a short background"></textarea>
                     </div>
 
                     <div id="form-message" aria-live="polite"></div>
 
-                    <button type="submit">Create Character</button>
-                    <button type="reset">Reset</button>
+                    <div class="form-buttons">
+                        <button type="submit">Create Character</button>
+                        <button type="reset" class="secondary-button">Reset</button>
+                    </div>
                 </form>
 
-                <div class="builder-info">
-
-                    <div class="info-panel">
+                <div class="builder-middle">
+                    <div class="builder-panel class-panel">
                         <h3>Class Details</h3>
 
                         <div id="class-details">
-                            <p>Select a class in the builder to view more information here.</p>
+                            <p>Select a class to view more information here.</p>
                         </div>
                     </div>
 
-                    <div class="info-panel">
+                    <div class="builder-panel ability-panel">
                         <h3>Choose Abilities</h3>
-                        <p>Pick abilities to customise your character.</p>
+                        <p>Choose up to three. Click again to remove one.</p>
 
                         <div id="ability-list">
-                            <button type="button" data-ability="Power Strike">Power Strike</button>
-                            <button type="button" data-ability="Fireball">Fireball</button>
-                            <button type="button" data-ability="Shadow Step">Shadow Step</button>
-                            <button type="button" data-ability="Healing Light">Healing Light</button>
-                            <button type="button" data-ability="Quick Shot">Quick Shot</button>
-                            <button type="button" data-ability="Stone Guard">Stone Guard</button>
+                            <button type="button" data-ability="Power Strike">
+                                Power Strike
+                            </button>
+                            <button type="button" data-ability="Fireball">
+                                Fireball
+                            </button>
+                            <button type="button" data-ability="Shadow Step">
+                                Shadow Step
+                            </button>
+                            <button type="button" data-ability="Healing Light">
+                                Healing Light
+                            </button>
+                            <button type="button" data-ability="Quick Shot">
+                                Quick Shot
+                            </button>
+                            <button type="button" data-ability="Stone Guard">
+                                Stone Guard
+                            </button>
                         </div>
+
                         <p id="ability-message" aria-live="polite"></p>
                     </div>
 
+                    <div class="builder-panel weapon-placeholder-panel">
+                        <p class="small-label">Weapon Showcase</p>
+
+                        <div class="weapon-showcase-placeholder">
+                            <span>Weapon showcase image</span>
+                            <small>Staff · Axe · Sword · Bow · Dagger</small>
+                        </div>
+                    </div>
                 </div>
 
-                <aside aria-label="Character Preview">
-                    <h3>Live Preview</h3>
+                <aside class="character-preview" aria-label="Character Preview">
+                    <p class="small-label">Live Character Preview</p>
 
-                    <article>
-                        <h4 id="preview-name">Unnamed Hero</h4>
+                    <div class="preview-avatar-area">
+                        <img id="builder-avatar" src="images/warrior.png" alt="Character avatar placeholder">
+                    </div>
 
+                    <h3 id="preview-name">Unnamed Hero</h3>
+                    <p id="avatar-help" class="preview-class-label">Choose a class</p>
+
+                    <div class="selected-weapon-preview">
+                        <div class="weapon-image-placeholder">
+                            <span>Weapon image</span>
+                        </div>
+                        <strong id="weapon-showcase-name">Choose a weapon</strong>
+                    </div>
+
+                    <div class="preview-details">
                         <p>
-                            <strong>Race / Class:</strong>
+                            <strong>Race / Class</strong>
                             <span id="preview-type">Not selected</span>
                         </p>
-
                         <p>
-                            <strong>Weapon:</strong>
+                            <strong>Weapon</strong>
                             <span id="preview-weapon">Not selected</span>
                         </p>
-
                         <p>
-                            <strong>Playstyle:</strong>
+                            <strong>Playstyle</strong>
                             <span id="preview-playstyle">Not selected</span>
                         </p>
+                    </div>
 
-                        <h5>Stats</h5>
-                        <ul id="preview-stats">
-                            <li>Strength: 0</li>
-                            <li>Magic: 0</li>
-                            <li>Agility: 0</li>
-                            <li>Defense: 0</li>
-                        </ul>
+                    <h4>Stats</h4>
+                    <ul id="preview-stats">
+                        <li>Strength: 0</li>
+                        <li>Magic: 0</li>
+                        <li>Agility: 0</li>
+                        <li>Defense: 0</li>
+                    </ul>
 
-                        <p>
-                            <strong>Abilities:</strong>
-                            <span id="preview-abilities">None selected</span>
-                        </p>
-                    </article>
+                    <div class="preview-abilities">
+                        <strong>Abilities</strong>
+                        <p id="preview-abilities">None selected</p>
+                    </div>
                 </aside>
-
             </div>
         </section>
 
