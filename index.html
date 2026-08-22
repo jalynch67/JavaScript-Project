@@ -358,19 +358,51 @@
         </section>
 
         <section id="about" class="page-section image-section final-image-section">
-            <h2>About This Project</h2>
+            <div class="about-main">
+                <p class="section-label">About The Forge</p>
+                <h2>A small character builder with a big adventure feel</h2>
 
-            <p>
-                Forge Your Hero is an interactive RPG character builder.
-                Users can choose character details, preview their build,
-                select abilities and save completed characters to the page.
-            </p>
+                <p>
+                    Forge Your Hero is an interactive RPG character builder made as a
+                    JavaScript student project. Create a hero without needing a large
+                    rulebook.
+                </p>
+
+                <p>
+                    Choose a class, race, playstyle, weapon and abilities, then save the
+                    finished character to your collection.
+                </p>
+
+                <div class="about-highlights" aria-label="Project highlights">
+                    <span>4 classes</span>
+                    <span>6 abilities</span>
+                    <span>Live preview</span>
+                    <span>Idea generator</span>
+                </div>
+            </div>
+
+            <div class="tavern-board">
+                <p class="small-label">The Tavern Noticeboard</p>
+                <h3>Ask for a rumour</h3>
+                <p>
+                    Draw a random clue and use it as inspiration for your background.
+                </p>
+
+                <blockquote id="rumour-text">
+                    Select the button to reveal a rumour from the local tavern.
+                </blockquote>
+
+                <button type="button" id="rumour-button">
+                    Draw a Rumour
+                </button>
+            </div>
         </section>
 
     </main>
 
     <footer>
         <p>&copy; 2026 Forge Your Hero</p>
+        <a href="#hero">Back to top</a>
     </footer>
 
     <script src="javascript/script.js"></script>

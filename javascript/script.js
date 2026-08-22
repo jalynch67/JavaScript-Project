@@ -36,6 +36,9 @@ const builderAvatar = document.getElementById("builder-avatar");
 const avatarHelp = document.getElementById("avatar-help");
 const weaponShowcaseName = document.getElementById("weapon-showcase-name");
 
+const rumourButton = document.getElementById("rumour-button");
+const rumourText = document.getElementById("rumour-text");
+
 /* Class Data */
 const classStats = {
   Warrior: {
@@ -90,6 +93,16 @@ const ideaClasses = ["Warrior", "Mage", "Rogue", "Ranger"];
 const ideaWeapons = ["Sword", "Axe", "Staff", "Bow", "Dagger"];
 const ideaPlaystyles = ["Balanced", "Aggressive", "Defensive", "Magical"];
 
+/* Tavern Rumour Data */
+const tavernRumours = [
+  "A ruined watchtower glows green every night, but no fire burns inside.",
+  "A travelling merchant is paying well for maps of the northern woods.",
+  "The old bridge keeper claims a dragon passed beneath the river at dawn.",
+  "Someone has been leaving silver coins outside every door in the village.",
+  "A sealed letter bearing the royal crest was found in an abandoned camp.",
+];
+
+/* Current Character Idea */
 let currentIdea = null;
 
 /* Selected Ability Data */
@@ -321,6 +334,11 @@ function updatePageProgress() {
 function getRandomItem(items) {
   const randomNumber = Math.floor(Math.random() * items.length);
   return items[randomNumber];
+}
+
+/* Tavern Rumour Function */
+function showRandomRumour() {
+  rumourText.textContent = getRandomItem(tavernRumours);
 }
 
 /* Character Idea Generator Function */
@@ -640,11 +658,14 @@ for (let i = 0; i < heroClassButtons.length; i++) {
   heroClassButtons[i].addEventListener("click", updateHeroClassPreview);
 }
 
-/* Character Idea Event Listener */
+/* Character Idea Event Listeners */
 generateIdeaButton.addEventListener("click", generateCharacterIdea);
 useIdeaButton.addEventListener("click", useCharacterIdea);
 
-/* Page Progress Event Listener */
+/* Tavern Rumour Event Listener */
+rumourButton.addEventListener("click", showRandomRumour);
+
+/* Page Progress Event Listeners */
 window.addEventListener("scroll", updatePageProgress);
 window.addEventListener("resize", updatePageProgress);
 
