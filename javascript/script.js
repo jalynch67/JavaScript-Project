@@ -25,11 +25,12 @@ const heroClassButtons = document.querySelectorAll(
 );
 const heroClassPreview = document.getElementById("hero-class-preview");
 const heroSelectorCount = document.querySelector(".hero-selector-count");
-const stepButtons = document.querySelectorAll(".step-button");
-const stepPreview = document.getElementById("step-preview");
 const pageSections = document.querySelectorAll(".page-section");
 const progressLinks = document.querySelectorAll(".progress-link");
 const progressFill = document.getElementById("progress-fill");
+const generateIdeaButton = document.getElementById("generate-idea-button");
+const useIdeaButton = document.getElementById("use-idea-button");
+const ideaResult = document.getElementById("idea-result");
 
 /* Class Data */
 const classStats = {
@@ -79,33 +80,13 @@ const classStats = {
   },
 };
 
-/* How It Works Data */
-const stepInfo = {
-  details: {
-    number: "Step 1",
-    title: "Start with the basics",
-    description:
-      "Give the character a name, choose a race and write a short background.",
-  },
-  class: {
-    number: "Step 2",
-    title: "Choose a class",
-    description:
-      "Pick a class to generate the character stats and recommended weapons.",
-  },
-  abilities: {
-    number: "Step 3",
-    title: "Add special abilities",
-    description:
-      "Select the skills that best match the character and chosen playstyle.",
-  },
-  save: {
-    number: "Step 4",
-    title: "Create the finished hero",
-    description:
-      "Submit the completed build and add the character to the saved characters section.",
-  },
-};
+/* Character Idea Data */
+const ideaRaces = ["Human", "Elf", "Dwarf", "Orc"];
+const ideaClasses = ["Warrior", "Mage", "Rogue", "Ranger"];
+const ideaWeapons = ["Sword", "Axe", "Staff", "Bow", "Dagger"];
+const ideaPlaystyles = ["Balanced", "Aggressive", "Defensive", "Magical"];
+
+let currentIdea = null;
 
 /* Selected Ability Data */
 let selectedAbilities = [];
@@ -281,27 +262,6 @@ function handleAbilityClick(event) {
   updateAbilitiesPreview();
 }
 
-/* How It Works Preview Function */
-function updateStepPreview(event) {
-  const selectedButton = event.currentTarget;
-  const selectedStep = selectedButton.dataset.step;
-  const step = stepInfo[selectedStep];
-
-  for (let i = 0; i < stepButtons.length; i++) {
-    stepButtons[i].classList.remove("selected");
-  }
-
-  selectedButton.classList.add("selected");
-
-  stepPreview.innerHTML = `
-    <span class="step-preview-number">${step.number}</span>
-    <div>
-      <h3>${step.title}</h3>
-      <p>${step.description}</p>
-    </div>
-  `;
-}
-
 /* Page Progress Function */
 function updatePageProgress() {
   const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -325,6 +285,86 @@ function updatePageProgress() {
       progressLinks[i].classList.add("active");
     }
   }
+}
+
+/* Random Item Function */
+function getRandomItem(items) {
+  const randomNumber = Math.floor(Math.random() * items.length);
+  return items[randomNumber];
+}
+
+/* Character Idea Generator Function */
+function generateCharacterIdea() {
+  currentIdea = {
+    race: getRandomItem(ideaRaces),
+    characterClass: getRandomItem(ideaClasses),
+    weapon: getRandomItem(ideaWeapons),
+    playstyle: getRandomItem(ideaPlaystyles),
+  };
+
+  const selectedClass = classStats[currentIdea.characterClass];
+
+  ideaResult.innerHTML = `
+    <img
+      src="${selectedClass.image}"
+      alt="${currentIdea.characterClass} class avatar"
+    >
+
+    <div>
+      <h4>${currentIdea.race} ${currentIdea.characterClass}</h4>
+
+      <div class="idea-details">
+        <p>
+          <strong>Race</strong>
+          ${currentIdea.race}
+        </p>
+
+        <p>
+          <strong>Class</strong>
+          ${currentIdea.characterClass}
+        </p>
+
+        <p>
+          <strong>Weapon</strong>
+          ${currentIdea.weapon}
+        </p>
+
+        <p>
+          <strong>Playstyle</strong>
+          ${currentIdea.playstyle}
+        </p>
+      </div>
+    </div>
+  `;
+
+  useIdeaButton.disabled = false;
+}
+
+/* Use Character Idea Function */
+function useCharacterIdea() {
+  if (currentIdea === null) {
+    return;
+  }
+
+  raceSelect.value = currentIdea.race;
+  classSelect.value = currentIdea.characterClass;
+  weaponSelect.value = currentIdea.weapon;
+
+  for (let i = 0; i < playstyleOptions.length; i++) {
+    if (playstyleOptions[i].value === currentIdea.playstyle) {
+      playstyleOptions[i].checked = true;
+    }
+  }
+
+  updateTypePreview();
+  updateWeaponPreview();
+  updatePlaystylePreview();
+  updateStatsPreview();
+  updateClassDetails();
+
+  document.getElementById("builder").scrollIntoView({
+    behavior: "smooth",
+  });
 }
 
 /* Form Validation Function */
@@ -523,10 +563,9 @@ for (let i = 0; i < heroClassButtons.length; i++) {
   heroClassButtons[i].addEventListener("click", updateHeroClassPreview);
 }
 
-/* How It Works Event Listener */
-for (let i = 0; i < stepButtons.length; i++) {
-  stepButtons[i].addEventListener("click", updateStepPreview);
-}
+/* Character Idea Event Listener */
+generateIdeaButton.addEventListener("click", generateCharacterIdea);
+useIdeaButton.addEventListener("click", useCharacterIdea);
 
 /* Page Progress Event Listeners */
 window.addEventListener("scroll", updatePageProgress);

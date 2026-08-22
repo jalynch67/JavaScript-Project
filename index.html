@@ -20,28 +20,23 @@
             <strong>Welcome</strong>
         </a>
 
-        <a href="#features" class="progress-link" data-section="features">
-            <span>2</span>
-            <strong>Overview</strong>
-        </a>
-
         <a href="#how-it-works" class="progress-link" data-section="how-it-works">
-            <span>3</span>
+            <span>2</span>
             <strong>How It Works</strong>
         </a>
 
         <a href="#builder" class="progress-link" data-section="builder">
-            <span>4</span>
+            <span>3</span>
             <strong>Builder</strong>
         </a>
 
         <a href="#saved-characters" class="progress-link" data-section="saved-characters">
-            <span>5</span>
+            <span>4</span>
             <strong>Saved</strong>
         </a>
 
         <a href="#about" class="progress-link" data-section="about">
-            <span>6</span>
+            <span>5</span>
             <strong>About</strong>
         </a>
     </div>
@@ -97,80 +92,61 @@
             </div>
         </section>
 
-
-        <section id="features" class="page-section parchment-section">
-            <div class="section-heading-row">
-                <div>
-                    <p class="section-label">Builder Overview</p>
-                    <h2>Everything you need to build a hero</h2>
-                </div>
-            </div>
-
-            <div class="overview-grid">
-
-                <article class="overview-card">
-                    <strong>4</strong>
-                    <h3>Classes</h3>
-                    <p>Warrior, Mage, Rogue and Ranger.</p>
-                </article>
-
-                <article class="overview-card">
-                    <strong>6</strong>
-                    <h3>Abilities</h3>
-                    <p>Select up to three abilities.</p>
-                </article>
-
-                <article class="overview-card">
-                    <strong>Live</strong>
-                    <h3>Preview</h3>
-                    <p>Character details update instantly.</p>
-                </article>
-
-                <article class="overview-card">
-                    <strong>∞</strong>
-                    <h3>Builds</h3>
-                    <p>Create and save multiple heroes.</p>
-                </article>
-
-            </div>
-        </section>
-
         <section id="how-it-works" class="page-section parchment-section">
-            <div class="section-heading-row">
-                <div>
-                    <p class="section-label">How It Works</p>
-                    <h2>Four steps from idea to hero</h2>
-                </div>
-                <a href="#builder" class="section-link">Open the builder</a>
+            <div class="section-heading">
+                <p class="section-label">How It Works</p>
+                <h2>Build a character in four steps</h2>
+                <p>Work through the builder and save your finished hero.</p>
             </div>
 
-            <div class="step-track" aria-label="Character creation steps">
-                <button type="button" class="step-button selected" data-step="details">
+            <div class="steps-list">
+                <article>
                     <span>1</span>
-                    Enter details
-                </button>
+                    <h3>Enter details</h3>
+                    <p>Add a name and choose a race.</p>
+                </article>
 
-                <button type="button" class="step-button" data-step="class">
+                <article>
                     <span>2</span>
-                    Pick a class
-                </button>
+                    <h3>Pick a class</h3>
+                    <p>Your class decides your stats and role.</p>
+                </article>
 
-                <button type="button" class="step-button" data-step="abilities">
+                <article>
                     <span>3</span>
-                    Add abilities
-                </button>
+                    <h3>Add abilities</h3>
+                    <p>Choose up to three special abilities.</p>
+                </article>
 
-                <button type="button" class="step-button" data-step="save">
+                <article>
                     <span>4</span>
-                    Save the hero
-                </button>
+                    <h3>Save your hero</h3>
+                    <p>Add the finished character to your collection.</p>
+                </article>
             </div>
 
-            <div id="step-preview" aria-live="polite">
-                <span class="step-preview-number">Step 1</span>
-                <div>
-                    <h3>Start with the basics</h3>
-                    <p>Give the character a name, choose a race and write a short background.</p>
+            <div class="idea-generator">
+                <div class="idea-generator-copy">
+                    <p class="section-label">Need Inspiration?</p>
+                    <h3>Generate a quick character idea</h3>
+                    <p>
+                        Get a random starting point and send it straight to the builder.
+                    </p>
+
+                    <div class="idea-buttons">
+                        <button type="button" id="generate-idea-button">
+                            Generate Idea
+                        </button>
+
+                        <button type="button" id="use-idea-button" class="secondary-button" disabled>
+                            Use in Builder
+                        </button>
+                    </div>
+                </div>
+
+                <div id="idea-result" class="idea-result" aria-live="polite">
+                    <div class="idea-avatar-placeholder">?</div>
+                    <p>Your character idea will appear here.</p>
                 </div>
             </div>
         </section>
