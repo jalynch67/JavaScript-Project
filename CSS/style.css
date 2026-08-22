@@ -8,22 +8,32 @@ html {
 
 body {
   margin: 0;
+  background: #17100b;
+  color: #2a190d;
   font-family: Georgia, "Times New Roman", serif;
-  background: radial-gradient(
-    circle at top,
-    #2c1d13 0%,
-    #1c120b 45%,
-    #0f0906 100%
-  );
-  color: #f9ecd0;
   line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
 main,
 .header-content,
 footer {
-  max-width: 1280px;
+  width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
 }
 
 /* Header */
@@ -60,26 +70,6 @@ nav a {
 nav a:hover {
   background: #392419;
   color: #fff8e7;
-}
-
-/* General Sections */
-section {
-  margin: 18px 20px;
-  padding: 22px;
-  background-color: rgba(58, 36, 22, 0.96);
-  border: 2px solid #7b4f2a;
-  border-radius: 10px;
-}
-
-section h2 {
-  margin: 0 0 6px;
-  color: #f1c76a;
-  letter-spacing: 0.5px;
-}
-
-section > p {
-  margin-top: 0;
-  color: #d8c29d;
 }
 
 /* Hero */
@@ -238,8 +228,6 @@ button:hover {
   width: 180px;
   height: 180px;
   object-fit: contain;
-  image-rendering: auto;
-  transform: translateZ(0);
 }
 
 @keyframes imageSweep {
@@ -259,7 +247,7 @@ button:hover {
   }
 }
 
-/* Page Progress Navigation */
+/* Progress Navigation */
 .page-progress {
   position: fixed;
   top: 50%;
@@ -323,22 +311,17 @@ button:hover {
   color: #ffffff;
 }
 
-/* Full Page Sections */
+/* Shared Sections */
 .page-section {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: calc(100vh - 64px);
-  margin-top: 0;
-  margin-bottom: 0;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding: 54px max(40px, calc((100vw - 1280px) / 2));
+  padding: 54px max(40px, calc((100vw - 1180px) / 2));
   scroll-margin-top: 64px;
-  border-left: 0;
-  border-right: 0;
-  border-radius: 0;
 }
 
 .parchment-section {
@@ -392,10 +375,13 @@ button:hover {
   color: #513a22;
 }
 
-.section-label {
-  margin: 0 0 5px;
+.section-label,
+.eyebrow,
+.small-label,
+.class-role {
+  margin-bottom: 6px;
   color: #774407;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -632,13 +618,6 @@ button:hover {
   font: inherit;
 }
 
-#character-form input:focus,
-#character-form select:focus,
-#character-form textarea:focus {
-  outline: 3px solid #f2c96d;
-  outline-offset: 2px;
-}
-
 #character-form textarea {
   resize: vertical;
 }
@@ -654,7 +633,7 @@ button:hover {
   gap: 6px;
 }
 
-.playstyle-options label {
+#character-form .playstyle-options label {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -662,19 +641,27 @@ button:hover {
   padding: 7px;
   background-color: #e2cda3;
   border: 1px solid #aa8757;
+  color: #29180c;
   font-weight: normal;
   cursor: pointer;
 }
 
-.playstyle-options input {
+#character-form .playstyle-options input {
+  display: inline-block;
   width: auto;
+  height: auto;
   margin: 0;
+  padding: 0;
+  background: initial;
+  border: initial;
+  border-radius: 0;
+  accent-color: #8e5e21;
 }
 
-.form-buttons {
+#character-form .form-buttons {
   display: flex;
   gap: 8px;
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
 }
 
 #form-message,
@@ -1017,51 +1004,24 @@ footer a {
   color: #f0c978;
 }
 
-/* Header Animations */
-@keyframes bannerFramePulse {
-  0% {
-    box-shadow:
-      0 10px 28px rgba(0, 0, 0, 0.35),
-      0 0 10px rgba(201, 154, 62, 0.12);
-  }
-
-  50% {
-    box-shadow:
-      0 10px 28px rgba(0, 0, 0, 0.4),
-      0 0 22px rgba(241, 199, 106, 0.28);
-  }
-
-  100% {
-    box-shadow:
-      0 10px 28px rgba(0, 0, 0, 0.35),
-      0 0 10px rgba(201, 154, 62, 0.12);
-  }
-}
-
-@keyframes bannerSweep {
-  0% {
-    left: -45%;
-    opacity: 0;
-  }
-
-  25% {
-    opacity: 0.7;
-  }
-
-  60% {
-    opacity: 0.45;
-  }
-
-  100% {
-    left: 115%;
-    opacity: 0;
-  }
+/* Focus Styles */
+button:focus-visible,
+a:focus-visible,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid #f2c96d;
+  outline-offset: 2px;
 }
 
 /* Responsive Layout */
 @media (max-width: 1000px) {
   #hero {
     grid-template-columns: 1fr;
+  }
+
+  .steps-list {
+    grid-template-columns: 1fr 1fr;
   }
 
   .builder-dashboard {
@@ -1102,15 +1062,6 @@ footer a {
   #hero-class-buttons {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  #hero-class-preview {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-class-image {
-    width: 100%;
-    height: 220px;
-  }
 }
 
 /* Responsive Progress Navigation */
@@ -1149,7 +1100,7 @@ footer a {
     padding: 55px 18px;
   }
 
-  .steps-list,
+  #hero-class-preview,
   .idea-generator,
   .builder-dashboard {
     grid-template-columns: 1fr;
@@ -1158,6 +1109,11 @@ footer a {
   .character-preview {
     grid-column: auto;
     grid-row: auto;
+  }
+
+  .hero-class-image {
+    width: 100%;
+    height: 220px;
   }
 
   #saved-characters-list {
@@ -1172,6 +1128,7 @@ footer a {
 @media (max-width: 520px) {
   .idea-result,
   .idea-details,
+  .steps-list,
   .form-grid,
   .playstyle-options,
   #ability-list {
