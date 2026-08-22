@@ -25,9 +25,6 @@ const heroClassButtons = document.querySelectorAll(
 );
 const heroClassPreview = document.getElementById("hero-class-preview");
 const heroSelectorCount = document.querySelector(".hero-selector-count");
-
-const featureButtons = document.querySelectorAll(".feature-option");
-const featurePreview = document.getElementById("feature-preview");
 const stepButtons = document.querySelectorAll(".step-button");
 const stepPreview = document.getElementById("step-preview");
 
@@ -76,42 +73,6 @@ const classStats = {
     weapons: "Bow, Crossbow, Twin Blades",
     mainStat: "Agility",
     image: "images/ranger.png",
-  },
-};
-
-/* Feature Preview Data */
-const featureInfo = {
-  class: {
-    label: "Class Selection",
-    title: "Choose how your hero fights",
-    description:
-      "Pick Warrior, Mage, Rogue or Ranger. Each class has its own stats, description and recommended weapons.",
-    exampleName: "Warrior",
-    exampleValue: "Strength 9",
-  },
-  stats: {
-    label: "Dynamic Stats",
-    title: "See the build change instantly",
-    description:
-      "Strength, magic, agility and defense update when a different class is selected.",
-    exampleName: "Mage",
-    exampleValue: "Magic 10",
-  },
-  abilities: {
-    label: "Ability Selection",
-    title: "Add skills to the build",
-    description:
-      "Choose abilities such as Fireball, Shadow Step and Stone Guard. Click an ability again to remove it.",
-    exampleName: "Selected",
-    exampleValue: "Up to you",
-  },
-  preview: {
-    label: "Live Character Card",
-    title: "Watch the hero take shape",
-    description:
-      "The character name, class, weapon, playstyle, stats and abilities appear together in the live preview.",
-    exampleName: "Updates",
-    exampleValue: "No refresh",
   },
 };
 
@@ -312,29 +273,6 @@ function handleAbilityClick(event) {
   }
 
   updateAbilitiesPreview();
-}
-
-/* Feature Preview Function */
-function updateFeaturePreview(event) {
-  const selectedButton = event.currentTarget;
-  const selectedFeature = selectedButton.dataset.feature;
-  const feature = featureInfo[selectedFeature];
-
-  for (let i = 0; i < featureButtons.length; i++) {
-    featureButtons[i].classList.remove("selected");
-  }
-
-  selectedButton.classList.add("selected");
-
-  featurePreview.innerHTML = `
-    <p class="feature-preview-label">${feature.label}</p>
-    <h3>${feature.title}</h3>
-    <p>${feature.description}</p>
-    <div class="feature-preview-example">
-      <span>${feature.exampleName}</span>
-      <strong>${feature.exampleValue}</strong>
-    </div>
-  `;
 }
 
 /* How It Works Preview Function */
@@ -552,11 +490,6 @@ for (let i = 0; i < abilityButtons.length; i++) {
 /* Hero Class Event Listener */
 for (let i = 0; i < heroClassButtons.length; i++) {
   heroClassButtons[i].addEventListener("click", updateHeroClassPreview);
-}
-
-/* Feature Preview Event Listener */
-for (let i = 0; i < featureButtons.length; i++) {
-  featureButtons[i].addEventListener("click", updateFeaturePreview);
 }
 
 /* How It Works Event Listener */
