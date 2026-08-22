@@ -1,3 +1,4 @@
+/* Page Element Selections */
 const characterForm = document.getElementById("character-form");
 const nameInput = document.getElementById("character-name");
 const raceSelect = document.getElementById("character-race");
@@ -13,9 +14,11 @@ const previewWeapon = document.getElementById("preview-weapon");
 const previewPlaystyle = document.getElementById("preview-playstyle");
 const previewStats = document.getElementById("preview-stats");
 const previewAbilities = document.getElementById("preview-abilities");
+
 const classDetails = document.getElementById("class-details");
 const abilityButtons = document.querySelectorAll("#ability-list button");
 const savedCharactersList = document.getElementById("saved-characters-list");
+
 const heroClassButtons = document.querySelectorAll(
   "#hero-class-buttons button",
 );
@@ -27,7 +30,7 @@ const featurePreview = document.getElementById("feature-preview");
 const stepButtons = document.querySelectorAll(".step-button");
 const stepPreview = document.getElementById("step-preview");
 
-/* Class data */
+/* Class Data */
 const classStats = {
   Warrior: {
     description:
@@ -75,7 +78,7 @@ const classStats = {
   },
 };
 
-/* Feature preview data */
+/* Feature Preview Data */
 const featureInfo = {
   class: {
     label: "Class Selection",
@@ -111,7 +114,7 @@ const featureInfo = {
   },
 };
 
-/* how it works data */
+/* How It Works Data */
 const stepInfo = {
   details: {
     number: "Step 1",
@@ -139,10 +142,10 @@ const stepInfo = {
   },
 };
 
-/* Selected ability data */
+/* Selected Ability Data */
 let selectedAbilities = [];
 
-/* name preview fcuntion */
+/* Name Preview Function */
 function updateNamePreview() {
   const characterName = nameInput.value.trim();
 
@@ -153,7 +156,7 @@ function updateNamePreview() {
   }
 }
 
-/* Race and class preview function */
+/* Race and Class Preview Function */
 function updateTypePreview() {
   const race = raceSelect.value;
   const characterClass = classSelect.value;
@@ -169,7 +172,7 @@ function updateTypePreview() {
   }
 }
 
-/* Weapon preview */
+/* Weapon Preview Function */
 function updateWeaponPreview() {
   const weapon = weaponSelect.value;
 
@@ -180,7 +183,7 @@ function updateWeaponPreview() {
   }
 }
 
-/* Playstyle preview */
+/* Playstyle Preview Function */
 function updatePlaystylePreview() {
   const selectedPlaystyle = document.querySelector(
     "input[name='playstyle']:checked",
@@ -193,7 +196,7 @@ function updatePlaystylePreview() {
   }
 }
 
-/* Stats Preview */
+/* Stats Preview Function */
 function updateStatsPreview() {
   const characterClass = classSelect.value;
 
@@ -216,14 +219,16 @@ function updateStatsPreview() {
   }
 }
 
-/* Class details preview */
+/* Class Details Preview Function */
 function updateClassDetails() {
   const characterClass = classSelect.value;
+
   if (characterClass === "") {
     classDetails.innerHTML =
       "<p>Select a class in the builder to view more information here.</p>";
   } else {
     const selectedClass = classStats[characterClass];
+
     classDetails.innerHTML = `
       <h3>${characterClass}</h3>
       <p>${selectedClass.description}</p>
@@ -232,7 +237,7 @@ function updateClassDetails() {
   }
 }
 
-/* Hero class preview function */
+/* Hero Class Preview Function */
 function updateHeroClassPreview(event) {
   const selectedButton = event.currentTarget;
   const selectedClassName = selectedButton.dataset.heroClass;
@@ -269,16 +274,12 @@ function updateHeroClassPreview(event) {
     </div>
 
     <div class="hero-class-image-wrap">
-      <img
-        id="hero-class-image"
-        src="${selectedClass.image}"
-        alt="${selectedClassName} class portrait"
-      >
+      <img id="hero-class-image" src="${selectedClass.image}" alt="${selectedClassName} class portrait">
     </div>
   `;
 }
 
-/* Abilities preview */
+/* Abilities Preview Function */
 function updateAbilitiesPreview() {
   if (selectedAbilities.length === 0) {
     previewAbilities.textContent = "None selected";
@@ -287,22 +288,25 @@ function updateAbilitiesPreview() {
   }
 }
 
-/* Ability BTN */
+/* Ability Button Click Function */
 function handleAbilityClick(event) {
-  const abilityName = event.target.dataset.ability;
+  const selectedButton = event.currentTarget;
+  const abilityName = selectedButton.dataset.ability;
 
   if (selectedAbilities.includes(abilityName)) {
     selectedAbilities = selectedAbilities.filter(function (ability) {
       return ability !== abilityName;
     });
+    selectedButton.classList.remove("selected");
   } else {
     selectedAbilities.push(abilityName);
+    selectedButton.classList.add("selected");
   }
 
   updateAbilitiesPreview();
 }
 
-/* Feature preview function */
+/* Feature Preview Function */
 function updateFeaturePreview(event) {
   const selectedButton = event.currentTarget;
   const selectedFeature = selectedButton.dataset.feature;
@@ -325,7 +329,7 @@ function updateFeaturePreview(event) {
   `;
 }
 
-/* How it works prevuew function */
+/* How It Works Preview Function */
 function updateStepPreview(event) {
   const selectedButton = event.currentTarget;
   const selectedStep = selectedButton.dataset.step;
@@ -346,7 +350,7 @@ function updateStepPreview(event) {
   `;
 }
 
-/* Form validation function */
+/* Form Validation Function */
 function validateCharacterForm() {
   const selectedPlaystyle = document.querySelector(
     "input[name='playstyle']:checked",
@@ -354,6 +358,7 @@ function validateCharacterForm() {
 
   if (nameInput.value.trim() === "") {
     formMessage.textContent = "Enter a name for your character.";
+    nameInput.focus();
     return false;
   }
 
@@ -384,12 +389,13 @@ function validateCharacterForm() {
   return true;
 }
 
-/* Create character object function */
-function createCharacterForm() {
+/* Create Character Object Function */
+function createCharacterFromForm() {
   const selectedPlaystyle = document.querySelector(
     "input[name='playstyle']:checked",
   );
   const selectedClass = classStats[classSelect.value];
+
   return {
     name: nameInput.value.trim(),
     race: raceSelect.value,
@@ -397,9 +403,9 @@ function createCharacterForm() {
     weapon: weaponSelect.value,
     playstyle: selectedPlaystyle.value,
     background: backgroundInput.value.trim(),
-    abilites: selectedAbilities.slice(),
+    abilities: selectedAbilities.slice(),
     stats: {
-      strenght: selectedClass.strength,
+      strength: selectedClass.strength,
       magic: selectedClass.magic,
       agility: selectedClass.agility,
       defense: selectedClass.defense,
@@ -407,30 +413,33 @@ function createCharacterForm() {
   };
 }
 
-/* Saved character function */
+/* Saved Character Card Function */
 function addSavedCharacter(character) {
   const emptyMessage = savedCharactersList.querySelector("p");
+
   if (emptyMessage !== null && savedCharactersList.children.length === 1) {
     savedCharactersList.innerHTML = "";
   }
+
   const characterCard = document.createElement("article");
   characterCard.classList.add("saved-character-card");
 
   const abilityText =
     character.abilities.length === 0
       ? "None selected"
-      : character.abilties.join(", ");
+      : character.abilities.join(", ");
 
   const backgroundText =
     character.background === "" ? "No background added." : character.background;
+
   characterCard.innerHTML = `
-  <h3>${character.name}</h3>
-  <p><strong>Race / Class:</strong> ${character.race} ${character.characterClass}</p>
-  <p><strong>Weapon:</strong> ${character.weapon}</p>
-  <p><strong>Playstyle:</strong> ${character.playstyle}
-  <p><strong>Abilities:</strong> ${character.abilites}</p>
-  <p><strong>Background:</strong> ${backgroundText}</p>
-  <ul>
+    <h3>${character.name}</h3>
+    <p><strong>Race / Class:</strong> ${character.race} ${character.characterClass}</p>
+    <p><strong>Weapon:</strong> ${character.weapon}</p>
+    <p><strong>Playstyle:</strong> ${character.playstyle}</p>
+    <p><strong>Abilities:</strong> ${abilityText}</p>
+    <p><strong>Background:</strong> ${backgroundText}</p>
+    <ul>
       <li>Strength: ${character.stats.strength}</li>
       <li>Magic: ${character.stats.magic}</li>
       <li>Agility: ${character.stats.agility}</li>
@@ -441,7 +450,7 @@ function addSavedCharacter(character) {
   savedCharactersList.appendChild(characterCard);
 }
 
-/* Reset builder preview function */
+/* Reset Builder Preview Function */
 function resetBuilderPreview() {
   selectedAbilities = [];
 
@@ -452,10 +461,10 @@ function resetBuilderPreview() {
   previewAbilities.textContent = "None selected";
 
   previewStats.innerHTML = `
-  <li>Strength: 0</li>
-  <li>Magic: 0</li>
-  <li>Agility: 0</li>
-  <li>Defense: 0</li>
+    <li>Strength: 0</li>
+    <li>Magic: 0</li>
+    <li>Agility: 0</li>
+    <li>Defense: 0</li>
   `;
 
   classDetails.innerHTML =
@@ -466,7 +475,35 @@ function resetBuilderPreview() {
   }
 }
 
-/* Main Form EL */
+/* Character Form Submit Function */
+function handleCharacterSubmit(event) {
+  event.preventDefault();
+
+  if (validateCharacterForm() === false) {
+    return;
+  }
+
+  const character = createCharacterFromForm();
+  addSavedCharacter(character);
+
+  formMessage.textContent = character.name + " has been created.";
+  characterForm.reset();
+  resetBuilderPreview();
+
+  document.getElementById("saved-characters").scrollIntoView({
+    behavior: "smooth",
+  });
+}
+
+/* Character Form Reset Function */
+function handleCharacterReset() {
+  window.setTimeout(function () {
+    formMessage.textContent = "";
+    resetBuilderPreview();
+  }, 0);
+}
+
+/* Main Form Event Listener */
 nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
 weaponSelect.addEventListener("change", updateWeaponPreview);
@@ -477,28 +514,30 @@ classSelect.addEventListener("change", function () {
   updateClassDetails();
 });
 
-/* Playstyle EL */
+characterForm.addEventListener("submit", handleCharacterSubmit);
+characterForm.addEventListener("reset", handleCharacterReset);
+
+/* Playstyle Event Listener */
 for (let i = 0; i < playstyleOptions.length; i++) {
   playstyleOptions[i].addEventListener("change", updatePlaystylePreview);
 }
 
-/* Ability BTN EL */
+/* Ability Button Event Listener */
 for (let i = 0; i < abilityButtons.length; i++) {
   abilityButtons[i].addEventListener("click", handleAbilityClick);
 }
 
-/* Hero Section BTN EL */
+/* Hero Class Event Listener */
 for (let i = 0; i < heroClassButtons.length; i++) {
   heroClassButtons[i].addEventListener("click", updateHeroClassPreview);
 }
 
-/* Feature & how it works EL */
+/* Feature Preview Event Listener */
 for (let i = 0; i < featureButtons.length; i++) {
   featureButtons[i].addEventListener("click", updateFeaturePreview);
 }
 
+/* How It Works Event Listener */
 for (let i = 0; i < stepButtons.length; i++) {
   stepButtons[i].addEventListener("click", updateStepPreview);
 }
-
-console.log("JavaScript is running");
