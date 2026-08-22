@@ -17,6 +17,7 @@ const previewAbilities = document.getElementById("preview-abilities");
 
 const classDetails = document.getElementById("class-details");
 const abilityButtons = document.querySelectorAll("#ability-list button");
+const abilityMessage = document.getElementById("ability-message");
 const savedCharactersList = document.getElementById("saved-characters-list");
 
 const heroClassButtons = document.querySelectorAll(
@@ -298,9 +299,16 @@ function handleAbilityClick(event) {
       return ability !== abilityName;
     });
     selectedButton.classList.remove("selected");
+    formMessage.textContent = "";
   } else {
+    if (selectedAbilities.length >= 3) {
+      abilityMessage.textContent = "You can only select 3 abilities.";
+
+      return;
+    }
     selectedAbilities.push(abilityName);
     selectedButton.classList.add("selected");
+    abilityMessage.textContent = "";
   }
 
   updateAbilitiesPreview();
@@ -472,6 +480,7 @@ function resetBuilderPreview() {
   previewWeapon.textContent = "Not selected";
   previewPlaystyle.textContent = "Not selected";
   previewAbilities.textContent = "None selected";
+  abilityMessage.textContent = "";
 
   previewStats.innerHTML = `
     <li>Strength: 0</li>

@@ -769,6 +769,13 @@ button:hover {
   border-color: #f1c76a;
 }
 
+#ability-message {
+  margin-top: 10px;
+  min-height: 20px;
+  color: #f1c76a;
+  font-size: 0.85rem;
+}
+
 /* Builder Preview */
 #builder aside {
   padding: 18px;
