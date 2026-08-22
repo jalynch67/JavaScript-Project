@@ -849,32 +849,89 @@ button:hover {
   font-size: 0.78rem;
 }
 
-/* Saved Characters and Footer */
+/* Saved Characters */
 #saved-characters-list {
-  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-#saved-characters-list p {
+.empty-message {
+  grid-column: 1 / -1;
+  padding: 30px;
+  background-color: #e2cda3;
+  border: 1px dashed #9a7544;
+  color: #2a190d;
+  text-align: center;
+}
+
+.empty-message h3 {
+  margin-bottom: 5px;
+}
+
+.empty-message p {
   margin: 0;
+  color: #49321b;
 }
 
 .saved-character-card {
-  margin-bottom: 16px;
-  padding: 16px;
-  border: 1px solid #7b4f2a;
-  border-radius: 6px;
-  background-color: #1f140d;
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 12px;
+  padding: 15px;
+  background-color: #f6e8c9;
+  border: 1px solid #9a7544;
+  border-radius: 5px;
+  color: #2a190d;
+}
+
+.saved-character-image {
+  width: 82px;
+  height: 100px;
+}
+
+.saved-character-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.saved-character-details {
+  min-width: 0;
+}
+
+.saved-character-details h3 {
+  margin: 0 0 7px;
+  color: #2a190d;
+}
+
+.saved-character-details p {
+  margin: 0 0 3px;
+  color: #49321b;
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.saved-character-details ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 12px;
+  margin: 9px 0;
+  padding-left: 16px;
+  color: #49321b;
+  font-size: 0.76rem;
 }
 
 .delete-character-btn {
-  margin-top: 12px;
+  padding: 6px 9px;
   background-color: #8b2f2f;
-  border-color: #b54b4b;
-  color: #fff;
+  border-color: #a94444;
+  color: #ffffff;
 }
 
 .delete-character-btn:hover {
-  background-color: #b54b4b;
+  background-color: #a94444;
 }
 
 footer {
@@ -937,6 +994,10 @@ footer {
   .character-preview {
     grid-column: 2;
     grid-row: 1 / span 2;
+  }
+
+  #saved-characters-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1021,6 +1082,10 @@ footer {
     grid-column: auto;
     grid-row: auto;
   }
+
+  #saved-characters-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 520px) {
@@ -1048,5 +1113,14 @@ footer {
 
   .full-field {
     grid-column: auto;
+  }
+
+  .saved-character-card {
+    grid-template-columns: 1fr;
+  }
+
+  .saved-character-image {
+    width: 100%;
+    height: 170px;
   }
 }

@@ -464,9 +464,9 @@ function createCharacterFromForm() {
 
 /* Saved Character Card Function */
 function addSavedCharacter(character) {
-  const emptyMessage = savedCharactersList.querySelector("p");
+  const emptyMessage = savedCharactersList.querySelector(".empty-message");
 
-  if (emptyMessage !== null && savedCharactersList.children.length === 1) {
+  if (emptyMessage !== null) {
     savedCharactersList.innerHTML = "";
   }
 
@@ -481,22 +481,55 @@ function addSavedCharacter(character) {
   const backgroundText =
     character.background === "" ? "No background added." : character.background;
 
+  const characterImage = classStats[character.characterClass].image;
+
   characterCard.innerHTML = `
-    <h3>${character.name}</h3>
-    <p><strong>Race / Class:</strong> ${character.race} ${character.characterClass}</p>
-    <p><strong>Weapon:</strong> ${character.weapon}</p>
-    <p><strong>Playstyle:</strong> ${character.playstyle}</p>
-    <p><strong>Abilities:</strong> ${abilityText}</p>
-    <p><strong>Background:</strong> ${backgroundText}</p>
-    <ul>
-      <li>Strength: ${character.stats.strength}</li>
-      <li>Magic: ${character.stats.magic}</li>
-      <li>Agility: ${character.stats.agility}</li>
-      <li>Defense: ${character.stats.defense}</li>
-    </ul>
-    <button class="delete-character-btn">
-      Delete
-    </button>
+    <div class="saved-character-image">
+      <img
+        src="${characterImage}"
+        alt="${character.characterClass} class avatar"
+      >
+    </div>
+
+    <div class="saved-character-details">
+      <h3>${character.name}</h3>
+
+      <p>
+        <strong>Race / Class:</strong>
+        ${character.race} ${character.characterClass}
+      </p>
+
+      <p>
+        <strong>Weapon:</strong>
+        ${character.weapon}
+      </p>
+
+      <p>
+        <strong>Playstyle:</strong>
+        ${character.playstyle}
+      </p>
+
+      <p>
+        <strong>Abilities:</strong>
+        ${abilityText}
+      </p>
+
+      <p>
+        <strong>Background:</strong>
+        ${backgroundText}
+      </p>
+
+      <ul>
+        <li>Strength: ${character.stats.strength}</li>
+        <li>Magic: ${character.stats.magic}</li>
+        <li>Agility: ${character.stats.agility}</li>
+        <li>Defense: ${character.stats.defense}</li>
+      </ul>
+
+      <button type="button" class="delete-character-btn">
+        Delete
+      </button>
+    </div>
   `;
 
   const deleteButton = characterCard.querySelector(".delete-character-btn");
@@ -505,7 +538,12 @@ function addSavedCharacter(character) {
     characterCard.remove();
 
     if (savedCharactersList.children.length === 0) {
-      savedCharactersList.innerHTML = "<p>No Characters saved yet.</p>";
+      savedCharactersList.innerHTML = `
+        <div class="empty-message">
+          <h3>No characters saved yet</h3>
+          <p>Use the builder to create your first character.</p>
+        </div>
+      `;
     }
   });
 
