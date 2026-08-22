@@ -27,6 +27,9 @@ const heroClassPreview = document.getElementById("hero-class-preview");
 const heroSelectorCount = document.querySelector(".hero-selector-count");
 const stepButtons = document.querySelectorAll(".step-button");
 const stepPreview = document.getElementById("step-preview");
+const pageSections = document.querySelectorAll(".page-section");
+const progressLinks = document.querySelectorAll(".progress-link");
+const progressFill = document.getElementById("progress-fill");
 
 /* Class Data */
 const classStats = {
@@ -299,6 +302,31 @@ function updateStepPreview(event) {
   `;
 }
 
+/* Page Progress Function */
+function updatePageProgress() {
+  const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progressAmount =
+    pageHeight > 0 ? (window.scrollY / pageHeight) * 100 : 0;
+
+  progressFill.style.height = progressAmount + "%";
+
+  let currentSection = pageSections[0].id;
+
+  for (let i = 0; i < pageSections.length; i++) {
+    if (window.scrollY >= pageSections[i].offsetTop - 170) {
+      currentSection = pageSections[i].id;
+    }
+  }
+
+  for (let i = 0; i < progressLinks.length; i++) {
+    progressLinks[i].classList.remove("active");
+
+    if (progressLinks[i].dataset.section === currentSection) {
+      progressLinks[i].classList.add("active");
+    }
+  }
+}
+
 /* Form Validation Function */
 function validateCharacterForm() {
   const selectedPlaystyle = document.querySelector(
@@ -499,3 +527,10 @@ for (let i = 0; i < heroClassButtons.length; i++) {
 for (let i = 0; i < stepButtons.length; i++) {
   stepButtons[i].addEventListener("click", updateStepPreview);
 }
+
+/* Page Progress Event Listeners */
+window.addEventListener("scroll", updatePageProgress);
+window.addEventListener("resize", updatePageProgress);
+
+/* Initial Page Progress Update */
+updatePageProgress();
