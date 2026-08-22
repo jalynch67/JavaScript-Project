@@ -35,6 +35,10 @@ const ideaResult = document.getElementById("idea-result");
 const builderAvatar = document.getElementById("builder-avatar");
 const avatarHelp = document.getElementById("avatar-help");
 const weaponShowcaseName = document.getElementById("weapon-showcase-name");
+const weaponShowcaseImage = document.getElementById("weapon-showcase-image");
+const weaponImagePlaceholderText = document.getElementById(
+  "weapon-image-placeholder-text",
+);
 
 const rumourButton = document.getElementById("rumour-button");
 const rumourText = document.getElementById("rumour-text");
@@ -85,6 +89,11 @@ const classStats = {
     mainStat: "Agility",
     image: "images/ranger.png",
   },
+};
+
+/* Weapon Image Data */
+const weaponImages = {
+  Sword: "images/sword.png",
 };
 
 /* Character Idea Data */
@@ -218,11 +227,24 @@ function updateBuilderAvatar() {
 /* Weapon Showcase Function */
 function updateWeaponShowcase() {
   const weapon = weaponSelect.value;
+  const weaponImage = weaponImages[weapon];
 
   if (weapon === "") {
     weaponShowcaseName.textContent = "Choose a weapon";
   } else {
     weaponShowcaseName.textContent = weapon;
+  }
+
+  if (weaponImage === undefined) {
+    weaponShowcaseImage.hidden = true;
+    weaponShowcaseImage.removeAttribute("src");
+    weaponShowcaseImage.alt = "";
+    weaponImagePlaceholderText.hidden = false;
+  } else {
+    weaponShowcaseImage.src = weaponImage;
+    weaponShowcaseImage.alt = weapon + " weapon";
+    weaponShowcaseImage.hidden = false;
+    weaponImagePlaceholderText.hidden = true;
   }
 }
 
