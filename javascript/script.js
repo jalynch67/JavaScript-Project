@@ -463,7 +463,7 @@ function addSavedCharacter(character) {
   deleteButton.addEventListener("click", function () {
     characterCard.remove();
 
-    if (savedCharactersList.childen.length === 0) {
+    if (savedCharactersList.children.length === 0) {
       savedCharactersList.innerHTML = "<p>No Characters saved yet.</p>";
     }
   });
