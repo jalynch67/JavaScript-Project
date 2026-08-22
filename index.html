@@ -11,72 +11,52 @@
 <body>
 
     <header>
-        <h1>Forge Your Hero</h1>
-        <p>
-            Create a fantasy RPG character by choosing their class, race,
-            weapon and abilities.
-        </p>
-
-        <nav aria-label="Main Navigation">
-            <a href="#builder">Builder</a>
-            <a href="#saved-characters">Saved Characters</a>
-            <a href="#about">About</a>
-        </nav>
+        <div class="header-content">
+            <a href="#hero" class="site-title">Forge Your Hero</a>
+            <nav aria-label="Main Navigation">
+                <a href="#builder">Builder</a>
+                <a href="#saved-characters">Saved Characters</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
     </header>
 
     <main>
 
-        <section id="hero">
+        <section id="hero" class="page-section image-section">
             <div class="hero-copy">
-                <p class="eyebrow">Interactive RPG Character Builder</p>
-                <h2>Forge a hero before the adventure begins</h2>
-                <p class="hero-intro">
-                    Choose a path, shape the build and watch the character come to life.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="#builder" class="hero-button">Start Building</a>
-                    <a href="#features" class="hero-secondary-button">Explore Features</a>
-                </div>
-
-                <div class="hero-highlights" aria-label="Builder highlights">
-                    <span>4 classes</span>
-                    <span>Live stats</span>
-                    <span>Custom abilities</span>
-                </div>
+                <p class="eyebrow">RPG Character Builder</p>
+                <h1>Build your next hero</h1>
+                <p class="hero-intro">Choose a class, race, weapon and abilities. Your character preview updates while
+                    you build.</p>
+                <a href="#builder" class="main-button">Start Building</a>
             </div>
 
             <div class="hero-selector">
                 <div class="hero-selector-heading">
                     <div>
-                        <p class="hero-selector-label">Class Preview</p>
-                        <h3>Choose Your Path</h3>
+                        <p class="small-label">Class Preview</p>
+                        <h2>Choose Your Path</h2>
                     </div>
                     <span class="hero-selector-count">01 / 04</span>
                 </div>
-
                 <div id="hero-class-buttons" aria-label="Preview a character class">
                     <button type="button" class="selected" data-hero-class="Warrior">Warrior</button>
                     <button type="button" data-hero-class="Mage">Mage</button>
                     <button type="button" data-hero-class="Rogue">Rogue</button>
                     <button type="button" data-hero-class="Ranger">Ranger</button>
                 </div>
-
                 <div id="hero-class-preview">
                     <div class="hero-class-text">
-                        <p class="class-role">Front-line fighter</p>
-                        <h4>Warrior</h4>
+                        <p class="class-role">Strength specialist</p>
+                        <h3>Warrior</h3>
                         <p>A strong front-line fighter who relies on strength and defense.</p>
-
                         <div class="class-facts">
                             <p><span>Main stat</span><strong>Strength</strong></p>
                             <p><span>Weapons</span><strong>Sword, Axe, Shield</strong></p>
                         </div>
                     </div>
-
-                    <div class="hero-class-image-wrap">
-                        <img id="hero-class-image" src="images/warrior.png" alt="Warrior class portrait">
-                    </div>
+                    <img class="hero-class-image" src="images/warrior.png" alt="Warrior class portrait">
                 </div>
             </div>
         </section>

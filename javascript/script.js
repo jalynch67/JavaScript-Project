@@ -220,7 +220,7 @@ function updateHeroClassPreview(event) {
   heroClassPreview.innerHTML = `
     <div class="hero-class-text">
       <p class="class-role">${selectedClass.mainStat} specialist</p>
-      <h4>${selectedClassName}</h4>
+      <h3>${selectedClassName}</h3>
       <p>${selectedClass.description}</p>
 
       <div class="class-facts">
@@ -228,6 +228,7 @@ function updateHeroClassPreview(event) {
           <span>Main stat</span>
           <strong>${selectedClass.mainStat}</strong>
         </p>
+
         <p>
           <span>Weapons</span>
           <strong>${selectedClass.weapons}</strong>
@@ -235,9 +236,11 @@ function updateHeroClassPreview(event) {
       </div>
     </div>
 
-    <div class="hero-class-image-wrap">
-      <img id="hero-class-image" src="${selectedClass.image}" alt="${selectedClassName} class portrait">
-    </div>
+    <img
+      class="hero-class-image"
+      src="${selectedClass.image}"
+      alt="${selectedClassName} class portrait"
+    >
   `;
 }
 
