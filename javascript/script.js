@@ -445,7 +445,20 @@ function addSavedCharacter(character) {
       <li>Agility: ${character.stats.agility}</li>
       <li>Defense: ${character.stats.defense}</li>
     </ul>
+    <button class="delete-character-btn">
+      Delete
+    </button>
   `;
+
+  const deleteButton = characterCard.querySelector(".delete-character-btn");
+
+  deleteButton.addEventListener("click", function () {
+    characterCard.remove();
+
+    if (savedCharactersList.childen.length === 0) {
+      savedCharactersList.innerHTML = "<p>No Characters saved yet.</p>";
+    }
+  });
 
   savedCharactersList.appendChild(characterCard);
 }
