@@ -817,6 +817,25 @@ button:hover {
   margin: 0;
 }
 
+.saved-character-card {
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid #7b4f2a;
+  border-radius: 6px;
+  background-color: #1f140d;
+}
+
+.delete-character-btn {
+  margin-top: 12px;
+  background-color: #8b2f2f;
+  border-color: #b54b4b;
+  color: #fff;
+}
+
+.delete-character-btn:hover {
+  background-color: #b54b4b;
+}
+
 footer {
   padding: 18px 20px 28px;
   text-align: center;
