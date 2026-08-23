@@ -4,9 +4,8 @@ Forge Your Hero is a single-page RPG character builder created with HTML, CSS, a
 
 ## Live Website
 
-Add the GitHub Pages link here:
-
-`https://github.com/jalynch67/JavaScript-Project`
+Repo: `https://github.com/jalynch67/JavaScript-Project`
+Live Web Application: `https://jalynch67.github.io/JavaScript-Project/`
 
 ## Features
 
