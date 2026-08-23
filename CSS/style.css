@@ -720,9 +720,12 @@ button:hover {
   overflow: hidden;
 }
 
+.weapon-placeholder-panel .small-label {
+  color: #774407;
+}
+
 .weapon-showcase-placeholder {
   width: 100%;
-  /* height: 126px; */
   min-width: 0;
   overflow: hidden;
   background-color: #17100b;
@@ -1022,6 +1025,57 @@ footer a {
   color: #f0c978;
 }
 
+/* Equal Height Builder Columns */
+@media (min-width: 1001px) {
+  .builder-dashboard {
+    align-items: stretch;
+  }
+
+  #character-form,
+  .builder-middle,
+  .character-preview {
+    height: 100%;
+    min-height: 0;
+  }
+
+  #character-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #character-form .form-buttons {
+    margin-top: auto;
+  }
+
+  .builder-middle {
+    display: grid;
+    grid-template-rows:
+      minmax(0, 0.8fr)
+      minmax(0, 1.2fr)
+      auto;
+    align-content: stretch;
+  }
+
+  .builder-middle .builder-panel {
+    min-height: 0;
+  }
+
+  .class-panel,
+  .ability-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ability-panel #ability-list {
+    margin-top: auto;
+  }
+
+  .weapon-placeholder-panel {
+    align-self: end;
+    width: 100%;
+  }
+}
+
 /* Focus Styles */
 button:focus-visible,
 a:focus-visible,
@@ -1058,17 +1112,34 @@ textarea:focus {
 
 @media (max-width: 700px) {
   .header-content {
-    min-height: 58px;
-    padding: 0 14px;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 10px 0 8px;
   }
 
   .site-title {
-    font-size: 0.95rem;
+    padding: 0 8px 8px;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  nav {
+    display: grid;
+    grid-template-columns: 0.85fr 1.5fr 0.85fr;
+    width: 100%;
+    gap: 4px;
   }
 
   nav a {
-    padding: 7px;
-    font-size: 0.8rem;
+    min-width: 0;
+    padding: 8px 4px;
+    border: 1px solid #5f4026;
+    background-color: #2b1b12;
+    font-size: 0.74rem;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
   }
 }
 
@@ -1140,6 +1211,24 @@ textarea:focus {
 
   .final-image-section {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  main,
+  .header-content,
+  footer {
+    width: min(100% - 20px, 1180px);
+  }
+
+  nav {
+    grid-template-columns: 0.8fr 1.6fr 0.8fr;
+    gap: 3px;
+  }
+
+  nav a {
+    padding: 8px 2px;
+    font-size: 0.68rem;
   }
 }
 
