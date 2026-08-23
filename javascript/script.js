@@ -34,10 +34,10 @@ const ideaResult = document.getElementById("idea-result");
 
 const builderAvatar = document.getElementById("builder-avatar");
 const avatarHelp = document.getElementById("avatar-help");
-const weaponShowcaseName = document.getElementById("weapon-showcase-name");
-const weaponShowcaseImage = document.getElementById("weapon-showcase-image");
-const weaponImagePlaceholderText = document.getElementById(
-  "weapon-image-placeholder-text",
+const selectedWeaponName = document.getElementById("selected-weapon-name");
+const selectedWeaponImage = document.getElementById("selected-weapon-image");
+const selectedWeaponFallback = document.getElementById(
+  "selected-weapon-fallback",
 );
 
 const rumourButton = document.getElementById("rumour-button");
@@ -228,27 +228,27 @@ function updateBuilderAvatar() {
   }
 }
 
-/* Weapon Showcase Function */
-function updateWeaponShowcase() {
+/* Selected Weapon Image Function */
+function updateSelectedWeaponImage() {
   const weapon = weaponSelect.value;
   const weaponImage = weaponImages[weapon];
 
   if (weapon === "") {
-    weaponShowcaseName.textContent = "Choose a weapon";
+    selectedWeaponName.textContent = "Choose a weapon";
   } else {
-    weaponShowcaseName.textContent = weapon;
+    selectedWeaponName.textContent = weapon;
   }
 
   if (weaponImage === undefined) {
-    weaponShowcaseImage.hidden = true;
-    weaponShowcaseImage.removeAttribute("src");
-    weaponShowcaseImage.alt = "";
-    weaponImagePlaceholderText.hidden = false;
+    selectedWeaponImage.hidden = true;
+    selectedWeaponImage.removeAttribute("src");
+    selectedWeaponImage.alt = "";
+    selectedWeaponFallback.hidden = false;
   } else {
-    weaponShowcaseImage.src = weaponImage;
-    weaponShowcaseImage.alt = weapon + " weapon";
-    weaponShowcaseImage.hidden = false;
-    weaponImagePlaceholderText.hidden = true;
+    selectedWeaponImage.src = weaponImage;
+    selectedWeaponImage.alt = weapon + " weapon";
+    selectedWeaponImage.hidden = false;
+    selectedWeaponFallback.hidden = true;
   }
 }
 
@@ -436,7 +436,7 @@ function useCharacterIdea() {
   updateStatsPreview();
   updateClassDetails();
   updateBuilderAvatar();
-  updateWeaponShowcase();
+  updateSelectedWeaponImage();
 
   document.getElementById("builder").scrollIntoView({
     behavior: "smooth",
@@ -616,7 +616,7 @@ function resetBuilderPreview() {
     "<p>Select a class in the builder to view more information here.</p>";
 
   updateBuilderAvatar();
-  updateWeaponShowcase();
+  updateSelectedWeaponImage();
 
   for (let i = 0; i < abilityButtons.length; i++) {
     abilityButtons[i].classList.remove("selected");
@@ -656,7 +656,7 @@ nameInput.addEventListener("input", updateNamePreview);
 raceSelect.addEventListener("change", updateTypePreview);
 weaponSelect.addEventListener("change", function () {
   updateWeaponPreview();
-  updateWeaponShowcase();
+  updateSelectedWeaponImage();
 });
 
 classSelect.addEventListener("change", function () {

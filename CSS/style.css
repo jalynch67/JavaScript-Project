@@ -714,18 +714,19 @@ button:hover {
   color: #ffffff;
 }
 
-.weapon-placeholder-panel {
+.weapon-showcase-panel {
   min-width: 0;
   padding: 12px;
   overflow: hidden;
 }
 
-.weapon-placeholder-panel .small-label {
+.weapon-showcase-panel .small-label {
   color: #774407;
 }
 
-.weapon-showcase-placeholder {
+.weapon-showcase {
   width: 100%;
+  height: 126px;
   min-width: 0;
   overflow: hidden;
   background-color: #17100b;
@@ -785,7 +786,7 @@ button:hover {
   text-align: left;
 }
 
-.weapon-image-placeholder {
+.selected-weapon-image {
   display: grid;
   place-items: center;
   width: 130px;
@@ -799,15 +800,15 @@ button:hover {
   text-align: center;
 }
 
-#weapon-showcase-image {
+#selected-weapon-image {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-#weapon-showcase-image[hidden],
-#weapon-image-placeholder-text[hidden] {
+#selected-weapon-image[hidden],
+#selected-weapon-fallback[hidden] {
   display: none;
 }
 
@@ -1070,7 +1071,7 @@ footer a {
     margin-top: auto;
   }
 
-  .weapon-placeholder-panel {
+  .weapon-showcase-panel {
     align-self: end;
     width: 100%;
   }
