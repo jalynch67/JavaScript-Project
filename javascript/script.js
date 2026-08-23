@@ -94,6 +94,10 @@ const classStats = {
 /* Weapon Image Data */
 const weaponImages = {
   Sword: "images/sword.png",
+  Axe: "images/axe.png",
+  Dagger: "images/dagger.png",
+  Staff: "images/staff.png",
+  Bow: "images/bow.png",
 };
 
 /* Character Idea Data */
