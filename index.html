@@ -10,7 +10,7 @@
 
 <body>
 
-    <div class="page-progress" aria-label="Page sections">
+    <nav class="page-progress" aria-label="Page sections">
         <div class="progress-line">
             <span id="progress-fill"></span>
         </div>
@@ -39,7 +39,7 @@
             <span>5</span>
             <strong>About</strong>
         </a>
-    </div>
+    </nav>
 
     <header>
         <div class="header-content">
@@ -207,30 +207,34 @@
                         </div>
                     </div>
 
-                    <fieldset>
+                    <fieldset aria-describedby="playstyle-keyboard-help">
                         <legend>Playstyle</legend>
 
                         <div class="playstyle-options">
-                            <label>
-                                <input type="radio" name="playstyle" value="Balanced">
-                                Balanced
+                            <label for="playstyle-balanced">
+                                <input type="radio" id="playstyle-balanced" name="playstyle" value="Balanced">
+                                <span>Balanced</span>
                             </label>
 
-                            <label>
-                                <input type="radio" name="playstyle" value="Aggressive">
-                                Aggressive
+                            <label for="playstyle-aggressive">
+                                <input type="radio" id="playstyle-aggressive" name="playstyle" value="Aggressive">
+                                <span>Aggressive</span>
                             </label>
 
-                            <label>
-                                <input type="radio" name="playstyle" value="Defensive">
-                                Defensive
+                            <label for="playstyle-defensive">
+                                <input type="radio" id="playstyle-defensive" name="playstyle" value="Defensive">
+                                <span>Defensive</span>
                             </label>
 
-                            <label>
-                                <input type="radio" name="playstyle" value="Magical">
-                                Magical
+                            <label for="playstyle-magical">
+                                <input type="radio" id="playstyle-magical" name="playstyle" value="Magical">
+                                <span>Magical</span>
                             </label>
                         </div>
+
+                        <p id="playstyle-keyboard-help" class="keyboard-help">
+                            Use the arrow keys to move between playstyles.
+                        </p>
                     </fieldset>
 
                     <div>
@@ -239,7 +243,7 @@
                             placeholder="Write a short background"></textarea>
                     </div>
 
-                    <div id="form-message" aria-live="polite"></div>
+                    <div id="form-message" role="status" aria-live="polite"></div>
 
                     <div class="form-buttons">
                         <button type="submit">Create Character</button>

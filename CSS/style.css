@@ -52,22 +52,22 @@ header {
 }
 
 .site-title,
-nav a {
+header nav a {
   color: #f4da9d;
   font-weight: bold;
   text-decoration: none;
 }
 
-nav {
+header nav {
   display: flex;
   gap: 6px;
 }
-nav a {
+header nav a {
   padding: 8px 11px;
   font-size: 0.88rem;
 }
 
-nav a:hover {
+header nav a:hover {
   background: #392419;
   color: #fff8e7;
 }
@@ -255,17 +255,20 @@ button:hover {
   z-index: 20;
   display: grid;
   gap: 16px;
+  margin: 0;
+  padding: 0;
   transform: translateY(-50%);
 }
 
 .progress-line {
   position: absolute;
   top: 14px;
-  left: 13px;
+  left: 14px;
   z-index: -1;
   width: 2px;
   height: calc(100% - 28px);
   background-color: #6c4a28;
+  transform: translateX(-50%);
 }
 
 #progress-fill {
@@ -279,14 +282,24 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
   color: #f5dfaf;
   font-size: 0.72rem;
+  font-weight: normal;
   text-decoration: none;
+}
+
+.progress-link:hover,
+.progress-link:focus-visible {
+  background: transparent;
 }
 
 .progress-link span {
   display: grid;
   place-items: center;
+  flex: 0 0 28px;
   width: 28px;
   height: 28px;
   background-color: #24170f;
@@ -301,6 +314,7 @@ button:hover {
 }
 
 .progress-link:hover strong,
+.progress-link:focus-visible strong,
 .progress-link.active strong {
   opacity: 1;
 }
@@ -634,11 +648,13 @@ button:hover {
 }
 
 #character-form .playstyle-options label {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  min-height: 38px;
   margin: 0;
-  padding: 7px;
+  padding: 7px 9px;
   background-color: #e2cda3;
   border: 1px solid #aa8757;
   color: #29180c;
@@ -646,16 +662,53 @@ button:hover {
   cursor: pointer;
 }
 
-#character-form .playstyle-options input {
+#character-form .playstyle-options label:hover {
+  background-color: #dcc393;
+  border-color: #8e5e21;
+}
+
+#character-form .playstyle-options input[type="radio"] {
   display: inline-block;
-  width: auto;
-  height: auto;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
   margin: 0;
   padding: 0;
   background: initial;
   border: initial;
   border-radius: 0;
   accent-color: #8e5e21;
+}
+
+#character-form
+  .playstyle-options
+  label:has(input[type="radio"]:focus-visible) {
+  background-color: #f3e7ca;
+  border-color: #6f4517;
+  outline: 3px solid #f2c96d;
+  outline-offset: 2px;
+}
+
+#character-form .playstyle-options label:has(input[type="radio"]:checked) {
+  background-color: #8e5e21;
+  border-color: #6f4517;
+  color: #ffffff;
+}
+
+#character-form
+  .playstyle-options
+  label:has(input[type="radio"]:checked):hover {
+  background-color: #6f4517;
+}
+
+#character-form .playstyle-options input[type="radio"]:focus-visible {
+  outline: none;
+}
+
+#character-form .keyboard-help {
+  margin: 7px 0 0;
+  color: #573b1c;
+  font-size: 0.74rem;
 }
 
 #character-form .form-buttons {

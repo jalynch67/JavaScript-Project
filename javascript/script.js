@@ -121,6 +121,9 @@ let currentIdea = null;
 /* Selected Ability Data */
 let selectedAbilities = [];
 
+/* Character Form Submission State */
+let isSubmittingCharacter = false;
+
 /* Name Preview Function */
 function updateNamePreview() {
   const characterName = nameInput.value.trim();
@@ -316,7 +319,7 @@ function handleAbilityClick(event) {
       return ability !== abilityName;
     });
     selectedButton.classList.remove("selected");
-    formMessage.textContent = "";
+    abilityMessage.textContent = "";
   } else {
     if (selectedAbilities.length >= 3) {
       abilityMessage.textContent = "You can only select 3 abilities.";
@@ -475,6 +478,7 @@ function validateCharacterForm() {
 
   if (selectedPlaystyle === null) {
     formMessage.textContent = "Choose a playstyle for your character.";
+    playstyleOptions[0].focus();
     return false;
   }
 
@@ -597,26 +601,17 @@ function addSavedCharacter(character) {
 /* Reset Builder Preview Function */
 function resetBuilderPreview() {
   selectedAbilities = [];
-
-  previewName.textContent = "Unnamed Hero";
-  previewType.textContent = "Not selected";
-  previewWeapon.textContent = "Not selected";
-  previewPlaystyle.textContent = "Not selected";
-  previewAbilities.textContent = "None selected";
   abilityMessage.textContent = "";
 
-  previewStats.innerHTML = `
-    <li>Strength: 0</li>
-    <li>Magic: 0</li>
-    <li>Agility: 0</li>
-    <li>Defense: 0</li>
-  `;
-
-  classDetails.innerHTML =
-    "<p>Select a class in the builder to view more information here.</p>";
-
+  updateNamePreview();
+  updateTypePreview();
+  updateWeaponPreview();
+  updatePlaystylePreview();
+  updateStatsPreview();
+  updateClassDetails();
   updateBuilderAvatar();
   updateSelectedWeaponImage();
+  updateAbilitiesPreview();
 
   for (let i = 0; i < abilityButtons.length; i++) {
     abilityButtons[i].classList.remove("selected");
@@ -632,11 +627,15 @@ function handleCharacterSubmit(event) {
   }
 
   const character = createCharacterFromForm();
+
   addSavedCharacter(character);
 
-  formMessage.textContent = character.name + " has been created.";
+  isSubmittingCharacter = true;
   characterForm.reset();
+  isSubmittingCharacter = false;
+
   resetBuilderPreview();
+  formMessage.textContent = character.name + " has been created.";
 
   document.getElementById("saved-characters").scrollIntoView({
     behavior: "smooth",
@@ -645,6 +644,10 @@ function handleCharacterSubmit(event) {
 
 /* Character Form Reset Function */
 function handleCharacterReset() {
+  if (isSubmittingCharacter === true) {
+    return;
+  }
+
   window.setTimeout(function () {
     formMessage.textContent = "";
     resetBuilderPreview();
